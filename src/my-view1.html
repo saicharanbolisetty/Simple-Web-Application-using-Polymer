@@ -1,0 +1,374 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-left-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-left-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/cascaded-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/transform-animation.html">
+<link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+
+
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view1">
+  <template>
+    <style is=custom-style include="shared-styles" include="app-grid-style" >
+      :host {
+        display: block;
+
+        padding: 10px;
+
+          --app-grid-columns: 3;
+          --app-grid-item-height: 100px;
+      }
+
+
+      ul {
+
+          position: relative;
+          max-width: 1000px;
+          margin: 5px auto;
+          padding: 0;
+          list-style: none;
+
+      }
+
+      li{
+          display: inline-block;
+          width: 50%;
+          color: black;
+          text-decoration: none;
+      }
+
+      li a{
+
+          text-decoration: none;
+      }
+
+      .item, .item2 {
+          background-color: white;
+          float: left;
+          text-align:center;
+          margin: 0px auto 0px auto;
+      }
+
+      .item1, .item3 {
+          background-color: white;
+          float: right;
+          text-align:center;
+          margin: 0px auto 0px auto;
+      }
+
+      app-header {
+          display: none !important;
+          height: 0px;
+      }
+
+
+
+      paper-card{
+
+          --paper-card-header-image-text:{
+              text-align: center;
+              color: #7742f4;
+              text-shadow:
+                      -1.5px -1.5px 0 #ffffff,
+                      1.5px -1.5px 0 #ffffff,
+                      -1.5px 1.5px 0 #ffffff,
+                      1.5px 1.5px 0 #ffffff;
+              margin-left:10%;
+              /*font-family: Jokerman,serif;*/
+              font-family: 'Indie Flower',cursive;
+
+          };
+
+
+
+         /* display: block;
+          margin: 5px;
+          --paper-card-header-image: {
+              height: 200px;
+          }*/
+          display: block;
+          margin: 5px;
+          padding: 16px;
+          color: #757575;
+          border-radius: 5px;
+          background-color: #fff;
+          height: auto;
+
+
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+          width:auto;
+      }
+
+
+      paper-card.rate { @apply(--layout-horizontal); }
+
+
+      .rate-image {
+          width: 100px;
+          height: 170px;
+          background: url('../images/always.png');
+          background-size: cover;
+          float:right;
+      }
+      .rate-content {
+          @apply(--layout-flex);
+          float: left;
+      }
+      .rate-header { @apply(--paper-font-headline); }
+      .rate-name { color: var(--paper-grey-600); margin: 10px 0; }
+      paper-icon-button.rate-icon {
+          --iron-icon-fill-color: white;
+          --iron-icon-stroke-color: var(--paper-grey-600);
+        }
+
+
+      @media (max-width: 960px) {
+          ul {
+              max-width: 800px;
+          }
+          li {
+              width: 50%;
+          }
+      }
+      @media (max-width: 719px) {
+
+          ul {
+              max-width: 400px;
+          }
+          li {
+              width: 100%;
+          }
+      }
+
+
+
+    </style>
+
+
+
+      <ul class="app-grid">
+
+          <li class="item">
+              <a href="#/view2">
+
+              <paper-card heading="About Us!" image="../images/about.png" alt="Sailboat Harbor" class="white">
+                  <div class="card-content">
+                      Vytas Delivers Professional Class Training, Development, Consulting, Infrastructure and Business Solutions.
+
+                  </div>
+                 <!-- <div class="card-actions">
+                      <paper-button>Know More</paper-button>
+
+                      <paper-icon-button icon="hardware:keyboard-arrow-up" title="more info" on-click="toggle" style="float:right;">
+                      </paper-icon-button>
+                      <iron-collapse id="collapse" style="width:100%;">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent enim ante, tempus eget volutpat ac, cursus ac ante. Nulla facilisi. Praesent sed lacinia ligula. Donec malesuada nisl eget quam iaculis, vel placerat justo cursus.
+                      </iron-collapse>
+
+                  </div>-->
+              </paper-card>
+              </a>
+          </li>
+          <li class="item1">
+
+              <a href="#/view3">
+              <paper-card heading="Services" image="../images/learning.png" alt="Sailboat Harbor" class="white">
+                  <div class="card-content">
+                      Leverage experienced data scientists and methodologies to implement advanced models and algorithms.
+                  </div>
+                 <!-- <div class="card-actions">
+                      <paper-button>Share</paper-button>
+                      <paper-button>Explore</paper-button>
+                      <paper-icon-button icon="hardware:keyboard-arrow-up" title="more info" on-click="toggle1" style="float:right;">
+                      </paper-icon-button>
+                      <iron-collapse id="collapse1" style="width:100%;">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent enim ante, tempus eget volutpat ac, cursus ac ante. Nulla facilisi. Praesent sed lacinia ligula. Donec malesuada nisl eget quam iaculis, vel placerat justo cursus.
+                      </iron-collapse>
+                      <script>
+
+                      </script>
+                  </div>-->
+              </paper-card>
+              </a>
+
+              <!--<div class="card">
+                  <div class="circle">1</div>
+                  <h1>View One</h1>
+                  <iron-image style="width:400px; height:400px; background-color: lightgray;" sizing="cover" preload fade src="../images/always.png"></iron-image>
+                  <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
+                  <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+              </div>-->
+          </li>
+          <li class="item">
+
+              <!--<div class="card">
+
+                  <div class="rate-image"></div>
+                  <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
+                  <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+
+
+                  </div>-->
+
+
+          </li>
+          <li class="item2">
+              <a href="#/view4">
+              <paper-card heading="Industries" image="../images/skills.png" alt="Sailboat Harbor" class="white">
+                  <div class="card-content">
+                      Complete Backup and Recovery Optimization solutions that solves toughest backup and recovery challenges.
+                  </div>
+                  <!--<div class="card-actions">
+                      <paper-button>Share</paper-button>
+                      <paper-button>Explore</paper-button>
+                      <paper-icon-button icon="hardware:keyboard-arrow-up" title="more info" on-click="toggle1" style="float:right;">
+                      </paper-icon-button>
+                      <iron-collapse id="collapse2" style="width:100%;">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent enim ante, tempus eget volutpat ac, cursus ac ante. Nulla facilisi. Praesent sed lacinia ligula. Donec malesuada nisl eget quam iaculis, vel placerat justo cursus.
+                      </iron-collapse>
+                      <script>
+
+                      </script>
+                  </div>-->
+              </paper-card>
+              </a>
+          </li>
+          <li class="item3">
+              <a href="#/view5">
+              <paper-card heading="Contact Us" image="../images/contact.png" alt="Sailboat Harbor" class="white">
+
+
+                          <div class="card-content">
+                              <iron-icon icon="social:person"></iron-icon>
+                              Rajiv Sai Ram
+                              <div>
+                              <iron-icon icon="communication:email"></iron-icon>
+                              rajivsairam@gmail.com
+                                  <iron-icon icon="communication:call"></iron-icon>
+                                  +919703500369
+                              </div>
+
+                          </div>
+
+
+
+
+                  <!--<div class="card-actions">
+                      <paper-button>Share</paper-button>
+                      <paper-button>Explore</paper-button>
+                      <paper-icon-button icon="hardware:keyboard-arrow-up" title="more info" on-click="toggle1" style="float:right;">
+                      </paper-icon-button>
+                      <iron-collapse id="collapse3" style="width:100%;">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent enim ante, tempus eget volutpat ac, cursus ac ante. Nulla facilisi. Praesent sed lacinia ligula. Donec malesuada nisl eget quam iaculis, vel placerat justo cursus.
+                      </iron-collapse>
+                      <script>
+
+                      </script>
+                  </div>-->
+              </paper-card>
+              </a>
+          </li>
+      </ul>
+
+
+
+
+
+
+
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-view1',
+
+        behaviors: [
+            Polymer.NeonAnimatableBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonSharedElementAnimatableBehavior
+        ],
+        properties: {
+            // START ANIMATIONS
+            animationConfig: {
+                value: function(){
+                    return {
+                        'entry': [{
+                            name: 'slide-from-left-animation',
+                            node: this
+                        },
+                            {name: "cascaded-animation",
+                        animation: "transform-animation",
+                        transformFrom: "translateY(100vh)",
+                        nodes: this.item,
+                        timing: {
+                        delay: 0,
+                            duration: 1000
+                    }}
+                        ],
+                        'exit': [{
+                            name: 'slide-left-animation',
+                            node: this
+                        }]
+                    }
+                }
+            }
+            // END ANIMATIONS
+        },
+
+
+        ready: function(){
+            this.item = Polymer.dom(this.root).querySelectorAll("item");
+            this.animationConfig["entry"].push({
+                name: "cascaded-animation",
+                animation: "transform-animation",
+                transformFrom: "translateY(100vh)",
+                nodes: this.item,
+                timing: {
+                    delay: 0,
+                    duration: 1000
+                }
+            })
+        },
+
+
+        toggle: function(){
+            this.$.collapse.toggle();
+    },
+
+        toggle1: function(){
+            this.$.collapse1.toggle();
+        }
+
+
+
+    });
+  </script>
+</dom-module>

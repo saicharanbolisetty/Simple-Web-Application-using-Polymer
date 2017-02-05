@@ -1,0 +1,381 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-right-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-left-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-right-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/cascaded-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/transform-animation.html">
+<link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/iron-swipeable-container/iron-swipeable-container.html">
+
+
+<dom-module id="my-view2">
+  <template>
+
+      <style is=custom-style include="shared-styles" include="app-grid-style" >
+          :host {
+              display: block;
+
+              padding: 10px;
+
+              --app-grid-columns: 3;
+              --app-grid-item-height: 100px;
+          }
+
+
+          ul {
+
+              position: relative;
+              max-width: 1000px;
+              margin: 5px auto;
+              padding: 0;
+              list-style: none;
+
+          }
+
+          li{
+              display: block;
+              width: 100%;
+              color: #757575;
+              text-decoration: none;
+          }
+
+          .item, .item1, .item2 {
+              background-color: white;
+
+              text-align:center;
+              margin: 0px auto 0px auto;
+          }
+
+
+
+          app-header {
+              display: none !important;
+              height: 0px;
+          }
+
+
+
+          paper-card{
+
+              --paper-card-header-image-text:{
+                  text-align: center;
+                  color: #7742f4;
+                  text-shadow:
+                          -1.5px -1.5px 0 #ffffff,
+                          1.5px -1.5px 0 #ffffff,
+                          -1.5px 1.5px 0 #ffffff,
+                          1.5px 1.5px 0 #ffffff;
+                 /* margin-left:10%;*/
+                  font-family: 'Indie Flower',cursive;
+              };
+
+
+
+              /* display: block;
+               margin: 5px;
+               --paper-card-header-image: {
+                   height: 200px;
+               }*/
+              display: block;
+              margin: 5px;
+              padding: 16px;
+              color: #757575;
+              border-radius: 5px;
+              background-color: #fff;
+              height: auto;
+              cursor: pointer;
+              box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+              width:100%;
+          }
+
+
+
+          paper-card.rate { @apply(--layout-horizontal); }
+
+
+          .rate-image {
+              width: 100px;
+              height: 170px;
+              background: url('../images/always.png');
+              background-size: cover;
+              float:right;
+          }
+          .rate-content {
+              @apply(--layout-flex);
+              float: left;
+          }
+          .rate-header { @apply(--paper-font-headline); }
+          .rate-name { color: var(--paper-grey-600); margin: 10px 0; }
+          paper-icon-button.rate-icon {
+              --iron-icon-fill-color: white;
+              --iron-icon-stroke-color: var(--paper-grey-600);
+          }
+
+
+          @media (max-width: 960px) {
+              ul {
+                  max-width: 800px;
+              }
+              li {
+                  width: 100%;
+              }
+          }
+          @media (max-width: 719px) {
+
+              ul {
+                  max-width: 400px;
+              }
+              li {
+                  width: 100%;
+              }
+          }
+
+
+
+      </style>
+
+
+
+      <ul class="app-grid">
+
+          <iron-swipeable-container swipe-style="curve">
+
+          <li class="item">
+
+
+
+              <paper-card heading="Company" image="../images/company.png" alt="Sailboat Harbor" class="white" on-tap="toggle">
+                  <div class="card-content">
+                      Vytas Delivers Professional Class Training, Development, Consulting, Infrastructure and Business Solutions.
+
+                  </div>
+
+                  <iron-collapse id="collapse" style="width:100%;">
+
+                      <p>We pride ourselves in consistently delivering unique programs that result in measurable increased performance for professionals at all stages of their careers. </p>
+                      <p>As a long term strategic business partners, Vytas delivers IMS Excellence through Managed IT services, Consuting & Training Services, Infrastructure and Technology Solutions and Service Management Consulting Solutions to its customers, globally. Its customers are medium to large businesses where IT plays a vital role as business driver.</p>
+                      <p>Vytas incorporated in 2012 is determined to provide top class business consulting services to companies around the world to realize the full potential and maximum return on their investment in IT. It offers extensive Industry experience in delivering high-value solutions that optimize and integrate the enterprises with lower costs and on-time delivery.</p>
+                      <p>Vytas is a resource center in scientific and engineering excellence, entered in learning and development domain in the view of the ever growing demands of the market for the skilled man power in high end technologies like Big Data, Hadoop, Cloud Computing, System Administration, Storage Management and Networking by bridging the gap between academics to Industry.</p>
+
+
+                  </iron-collapse>
+                   <!--<div class="card-actions">
+
+
+                   </div>-->
+              </paper-card>
+
+          </li>
+          </iron-swipeable-container>
+          <li class="item1">
+
+
+              <paper-card heading="Why Vytas?" image="../images/why.png" alt="Sailboat Harbor" class="white" on-tap="toggle1">
+                  <div class="card-content">
+                      Vytas Learning helps organizations to
+                  </div>
+                  <iron-collapse id="collapse1" style="width:100%;">
+
+
+
+
+                          <p>  Expand performance by increasing productivity and effectiveness of individuals and aligning them with their business objectives. </p>
+                          <p>  Provide a measurable return on investment for their training Investments, creating the business justification for training expenditures. </p>
+                          <p>  Assess employee competencies against job requirements, identify gaps and create development plans to enable effectiveness and growth. </p>
+                          <p>  Efficiently and thoroughly develop and retain employees while minimizing time away from the office for training. </p>
+                          <p>  Maximizing organizational performance by implementing and administering a learning solution to help simplify client’s training requirement. </p>
+                          <p>  Provides centralized managerial and administrative support services. A team of learning experts will ensure that the training solution is smoothly implemented. </p>
+
+                  </iron-collapse>
+                  <!-- <div class="card-actions">
+
+
+                       <script>
+
+                       </script>
+                   </div>-->
+              </paper-card>
+
+
+              <!--<div class="card">
+                  <div class="circle">1</div>
+                  <h1>View One</h1>
+                  <iron-image style="width:400px; height:400px; background-color: lightgray;" sizing="cover" preload fade src="../images/always.png"></iron-image>
+                  <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
+                  <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+              </div>-->
+          </li>
+          <li class="item">
+
+              <!--<div class="card">
+
+                  <div class="rate-image"></div>
+                  <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
+                  <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+
+
+                  </div>-->
+
+
+          </li>
+          <li class="item2">
+              <paper-card heading="Our Capabilities" image="../images/capabilities.png" alt="Sailboat Harbor" class="white" on-tap="toggle2">
+                  <div class="card-content">
+                      Our Team has:
+
+                  </div>
+                  <iron-collapse id="collapse2" style="width:100%;">
+
+                          <p>A broad network of on-board facilitators, consultants and partner firms to offer a “best-in-class”, yet affordable suite of training, and organizational development resources.</p>
+                          <p>Ability to customize the training, both in content & delivery, depending upon the unique requirements of each client.</p>
+                          <p>Virtual, e-learning and blended training solutions along with traditional high quality classroom training.</p>
+                          <p>National and Global Delivery Resources.</p>
+                          <p>Our corporate training programs provide holistic solutions and we are committed to a philosophy of excellence.</p>
+
+
+                  </iron-collapse>
+
+              </paper-card>
+
+          </li>
+
+      </ul>
+
+
+
+
+
+
+
+
+
+
+
+      <!-- <style include="shared-styles">
+         :host {
+           display: block;
+
+           padding: 10px;
+         }
+
+         h1{
+           text-align: center;
+         }
+       </style>-->
+
+
+
+
+
+
+    <!--<div class="card">
+      <div class="circle">Company</div>
+      &lt;!&ndash;<h1>Company</h1>&ndash;&gt;
+      <p>Vytas Delivers Professional Class Training, Development, Consulting, Infrastructure and Business Solutions. We pride ourselves in consistently delivering unique programs that result in measurable increased performance for professionals at all stages of their careers. </p>
+      <p>As a long term strategic business partners, Vytas delivers IMS Excellence through Managed IT services, Consuting & Training Services, Infrastructure and Technology Solutions and Service Management Consulting Solutions to its customers, globally. Its customers are medium to large businesses where IT plays a vital role as business driver.</p>
+      <p>Vytas incorporated in 2012 is determined to provide top class business consulting services to companies around the world to realize the full potential and maximum return on their investment in IT. It offers extensive Industry experience in delivering high-value solutions that optimize and integrate the enterprises with lower costs and on-time delivery.</p>
+      <p>Vytas is a resource center in scientific and engineering excellence, entered in learning and development domain in the view of the ever growing demands of the market for the skilled man power in high end technologies like Big Data, Hadoop, Cloud Computing, System Administration, Storage Management and Networking by bridging the gap between academics to Industry.</p>
+
+    </div>
+
+    <div class="card">
+        <div class="circle">Why Vytas?</div>
+      &lt;!&ndash;<h1>Why Vytas?</h1>&ndash;&gt;
+      <p>
+        <ul type="circle">
+       <p> Vytas Learning helps organizations to </p>
+      <li>  Expand performance by increasing productivity and effectiveness of individuals and aligning them with their business objectives. </li>
+      <li>  Provide a measurable return on investment for their training Investments, creating the business justification for training expenditures. </li>
+      <li>  Assess employee competencies against job requirements, identify gaps and create development plans to enable effectiveness and growth </li>
+      <li>  Efficiently and thoroughly develop and retain employees while minimizing time away from the office for training. </li>
+      <li>  Maximizing organizational performance by implementing and administering a learning solution to help simplify client’s training requirement. </li>
+      <li>  Provides centralized managerial and administrative support services. A team of learning experts will ensure that the training solution is smoothly implemented. </li>
+    </ul>
+      </p>
+    </div>
+
+    <div class="card">
+        <div class="circle1">Our Capabilities</div>
+      &lt;!&ndash;<h1>Our Capabilities</h1>&ndash;&gt;
+      <p>
+          <ul type="circle">
+        <li>A broad network of on-board facilitators, consultants and partner firms to offer a “best-in-class”, yet affordable suite of training, and organizational development resources.</li>
+        <li>Ability to customize the training, both in content & delivery, depending upon the unique requirements of each client.</li>
+        <li>Virtual, e-learning and blended training solutions along with traditional high quality classroom training.</li>
+        <li>National and Global Delivery Resources.</li>
+        <li>Our corporate training programs provide holistic solutions and we are committed to a philosophy of excellence.</li>
+
+    </ul>
+      </p>
+    </div>-->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-view2',
+
+
+
+        behaviors: [
+            Polymer.NeonAnimatableBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonSharedElementAnimatableBehavior
+        ],
+        properties: {
+            // START ANIMATIONS
+            animationConfig: {
+                value: function(){
+                    return {
+                        'entry': [{
+                            name: 'slide-from-right-animation',
+                            node: this
+                        }],
+                        'exit': [{
+                            name: 'slide-right-animation',
+                            node: this
+                        }]
+                    }
+                }
+            }
+            // END ANIMATIONS
+        },
+
+
+
+        toggle: function(){
+            this.$.collapse.toggle();
+        },
+
+        toggle1: function(){
+            this.$.collapse1.toggle();
+        },
+
+        toggle2: function(){
+            this.$.collapse2.toggle();
+        }
+
+
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,381 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link href="https://fonts.googleapis.com/css?family=Holtwood+One+SC" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Tangerine">
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-menu/paper-submenu.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu-shared-styles.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-menu-button/paper-menu-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="../bower_components/app-layout/app-scrollpos-control/app-scrollpos-control.html">
+
+<link rel="import" href="my-view1.html">
+<link rel="import" href="my-view2.html">
+<link rel="import" href="my-view3.html">
+<link rel="import" href="my-view4.html">
+<link rel="import" href="my-view5.html">
+<link rel="import" href="my-view404.html">
+
+
+<dom-module id="my-app">
+  <template>
+    <style>
+      :host {
+          display: block;
+          position: relative;
+          padding-top: 130px;
+          padding-bottom: 70px;
+          min-height: 100vh;
+
+          --app-primary-color: #202020;
+          --app-secondary-color: #757575;
+          --app-accent-color: #172C50;
+          --paper-button-ink-color: var(--app-accent-color);
+          --paper-icon-button-ink-color: var(--app-accent-color);
+          --paper-spinner-color: var(--app-accent-color);
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+          color: var(--app-primary-color);
+      }
+
+
+      app-header {
+          @apply(--layout-fixed-top);
+          z-index: 1;
+          background-color: rgba(255, 255, 255, 0.95);
+          --app-header-shadow: {
+              box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.2);
+              height: 10px;
+              bottom: -10px;
+          };
+          --app-header-background-rear-layer: {
+              /* The header is blue when condensed */
+              background-color: #f44242;
+          };
+      }
+
+      app-header paper-icon-button {
+          color: var(--app-primary-color);
+      }
+
+
+      .drawer-list {
+        margin: 0 20px;
+      }
+
+      .drawer-list a {
+        display: block;
+        padding: 0 16px;
+        text-decoration: none;
+        color: var(--app-secondary-color);
+        line-height: 40px;
+      }
+
+      .drawer-list a.iron-selected {
+        color: black;
+        font-weight: bold;
+      }
+
+      [hidden] {
+          display: none !important;
+      }
+
+      paper-tab {
+          --paper-tab-ink: #aaa;
+          text-transform: uppercase;
+
+
+      }
+
+      @font-face {
+          font-family: 'woods'; /*a name to be used later*/
+          src: url('https://static1.squarespace.com/static/56c74ae11bbee0becc9b4010/t/57eada08e58c6207566feec5/1475009032219/TheWoodlands-Regular.otf'); /*URL to font*/
+      }
+
+/*
+      @import url('https://fonts.googleapis.com/css?family=Holtwood+One+SC');
+*/
+      .logo {
+          text-align: center;
+          /*font-family: 'Holtwood One SC', serif;*/
+          font-family: 'Tangerine', serif;
+          font-size: 2.5em;
+          font-weight: bold;
+          font-style: oblique;
+          padding-top: 3%;
+          padding-bottom: 2%;
+
+      }
+
+
+
+
+
+      .logo a {
+          font-size: 34px;
+          font-weight: 600;
+          letter-spacing: 0.3em;
+          /*color: var(--app-primary-color);*/
+          text-decoration: none;
+          /* required for IE 11, so this <a> can receive pointer events */
+          display: inline-block;
+          pointer-events: auto;
+          color: #f44242;
+      }
+
+      .subtitle{
+          font-size: 16px;
+          font-family: 'Tangerine', serif;
+          color: #7742f4;
+      }
+
+
+
+
+
+
+      paper-tabs {
+          position: absolute;
+          height: 50%;
+          text-align: center;
+          --paper-tabs-container: center;
+
+
+      }
+      paper-tab {
+          margin: 0 10px;
+
+      }
+      paper-tab a {
+          display: inline-block;
+          outline: none;
+          padding: 9px 5px;
+          font-size: 13px;
+          font-weight: 500;
+          text-decoration: none;
+          color: var(--app-primary-color);
+      }
+
+
+      #tabsContent{
+          width: 600px ;
+          margin:0 auto ;
+
+      }
+
+
+
+
+      footer {
+
+         padding-top: 100px;
+
+
+
+      }
+
+      footer > a {
+
+          position: fixed;
+          right: 0;
+          bottom: 0;
+          left: 0;
+
+          background-color: #FFFFFF;
+          text-align: center;
+
+          color: var(--app-secondary-color);
+          text-decoration: none;
+      }
+
+
+
+
+    </style>
+
+    <app-location route="{{route}}" use-hash-as-path></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
+
+      <app-scrollpos-control selected="{{page}}"></app-scrollpos-control>
+
+    <app-drawer-layout fullbleed force-narrow>
+      <!-- Drawer content -->
+      <app-drawer id="drawer">
+        <app-toolbar>Menu</app-toolbar>
+        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <a name="view1" href="#/view1">Home</a>
+          <a name="view2" href="#/view2">About Us</a>
+          <a name="view3" href="#/view3">Services</a>
+            <a name="view4" href="#/view4">Industries</a>
+            <a name="view5" href="#/view5">Contact Us</a>
+        </iron-selector>
+      </app-drawer>
+
+      <!-- Main content -->
+      <app-header-layout id="panel">
+
+        <app-header condenses fixed effects="waterfall">
+          <app-toolbar>
+            <paper-icon-button icon="my-icons:menu" drawer-toggle hidden$="{{wideLayout}}"></paper-icon-button>
+
+              <div class="logo" hidden$="{{!wideLayout}}" main-title><a href="#/">Vytas Technologies
+
+                  <div class="subtitle">
+                  Careers Craftsmen
+              </div></a>
+              </div>
+              <div class="logo" hidden$="{{wideLayout}}" main-title><a href="#/">Vytas<br/>Technologies
+                  </a>
+              </div>
+
+          </app-toolbar>
+
+            <app-toolbar id="tabsContent" hidden$="{{!wideLayout}}" sticky>
+                <paper-tabs selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <paper-tab link>
+                    <a name="view1" href="#/view1" class="link" tabindex="-1">
+
+
+
+                        Home
+                    </a>
+
+
+
+                    </paper-tab>
+                    <paper-tab link>
+                    <a name="view2" href="#/view2" class="link" tabindex="-1">About Us</a>
+                    </paper-tab>
+                        <paper-tab link>
+                    <a name="view3" href="#/view3" class="link" tabindex="-1">Services</a>
+                        </paper-tab>
+                    </paper-tab>
+                    <paper-tab link>
+                        <a name="view4" href="#/view4" class="link" tabindex="-1">Industries</a>
+                    </paper-tab>
+                    </paper-tab>
+                    <paper-tab link>
+                        <a name="view5" href="#/view5" class="link" tabindex="-1">Contact Us</a>
+                    </paper-tab>
+                </paper-tabs>
+            </app-toolbar>
+
+        </app-header>
+
+        <neon-animated-pages
+            selected="[[page]]"
+            attr-for-selected="name"
+            fallback-selection="view404"
+            role="main" >
+          <my-view1 name="view1"></my-view1>
+          <my-view2 name="view2"></my-view2>
+          <my-view3 name="view3"></my-view3>
+            <my-view4 name="view4"></my-view4>
+            <my-view5 name="view5"></my-view5>
+          <my-view404 name="view404"></my-view404>
+        </neon-animated-pages>
+
+      </app-header-layout>
+
+    </app-drawer-layout>
+
+      <footer>
+
+
+          <a>© Copyright @ 2017 Vytas Technologies. All Rights Reserved.</a>
+
+      </footer>
+
+
+
+
+      <iron-media-query query="min-width: 600px" query-matches="{{wideLayout}}"></iron-media-query>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-app',
+
+
+      properties: {
+        page: {
+          type: String,
+          reflectToAttribute: true,
+          observer: '_pageChanged',
+        },
+      },
+
+      observers: [
+        '_routePageChanged(routeData.page)',
+      ],
+
+      _routePageChanged: function(page) {
+        this.page = page || 'view1';
+
+        if (!this.$.drawer.persistent) {
+          this.$.drawer.close();
+        }
+      },
+
+      _pageChanged: function(page) {
+        // Load page import on demand. Show 404 page if fails
+        var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+
+
+      },
+
+      _showPage404: function() {
+        this.page = 'view404';
+      },
+
+        wideLayout: {
+            type: Boolean,
+            value: false,
+            observer: 'onLayoutChange',
+        },
+
+        onLayoutChange: function(wide) {
+            var drawer = this.$.drawer;
+            if (wide && drawer.opened) {
+                drawer.opened = false;
+            }
+        }
+    });
+  </script>
+</dom-module>

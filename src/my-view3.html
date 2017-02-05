@@ -1,0 +1,4147 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-right-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-left-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-right-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/cascaded-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/transform-animation.html">
+<link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/iron-swipeable-container/iron-swipeable-container.html">
+
+<dom-module id="my-view3">
+  <template>
+    <style is=custom-style include="shared-styles" include="app-grid-style">
+      :host {
+        display: block;
+
+        padding: 10px;
+
+        --app-grid-columns: 3;
+        --app-grid-item-height: 100px;
+      }
+
+
+      ul {
+
+        position: relative;
+        max-width: 1000px;
+        margin: 5px auto;
+        padding: 0;
+        list-style: none;
+
+      }
+
+      li{
+        display: block;
+        width: 100%;
+        color: #757575;
+        text-decoration: none;
+      }
+
+      .item, .item1, .item2 {
+        background-color: white;
+
+        text-align:center;
+        margin: 0px auto 0px auto;
+      }
+
+
+
+      app-header {
+        display: none !important;
+        height: 0px;
+      }
+
+
+
+      paper-card{
+
+        --paper-card-header-image-text:{
+          text-align: center;
+          color: #7742f4;
+            text-shadow:
+                    -1.5px -1.5px 0 #ffffff,
+                    1.5px -1.5px 0 #ffffff,
+                    -1.5px 1.5px 0 #ffffff,
+                    1.5px 1.5px 0 #ffffff;
+          /* margin-left:10%;*/
+            font-family: 'Indie Flower',cursive;
+        };
+
+
+
+        /* display: block;
+         margin: 5px;
+         --paper-card-header-image: {
+             height: 200px;
+         }*/
+        display: block;
+        margin: 5px;
+        padding: 16px;
+        color: #757575;
+        border-radius: 5px;
+        background-color: #fff;
+        height: auto;
+
+
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        width:100%;
+      }
+
+
+
+      paper-card.rate { @apply(--layout-horizontal); }
+
+
+      .rate-image {
+        width: 100px;
+        height: 170px;
+        background: url('../images/always.png');
+        background-size: cover;
+        float:right;
+      }
+      .rate-content {
+        @apply(--layout-flex);
+        float: left;
+      }
+      .rate-header { @apply(--paper-font-headline); }
+      .rate-name { color: var(--paper-grey-600); margin: 10px 0; }
+      paper-icon-button.rate-icon {
+        --iron-icon-fill-color: white;
+        --iron-icon-stroke-color: var(--paper-grey-600);
+      }
+
+
+      @media (max-width: 960px) {
+        ul {
+          max-width: 800px;
+        }
+        li {
+          width: 100%;
+        }
+      }
+      @media (max-width: 719px) {
+
+        ul {
+          max-width: 400px;
+        }
+        li {
+          width: 100%;
+        }
+      }
+
+
+      a{
+          cursor: pointer;
+      }
+
+        iron-collapse{
+            cursor: pointer;
+        }
+
+
+    </style>
+
+
+
+
+    <ul class="app-grid">
+
+      <iron-swipeable-container swipe-style="curve">
+        <li class="item">
+          <paper-card heading="Online Training" image="../images/online.png" alt="Sailboat Harbor" class="white" >
+            <div class="card-content" >
+                <a on-tap="toggle">
+                    Click to Know More (or) Swipe to know about other services.
+
+                </a>
+            </div>
+            <iron-collapse id="collapse" style="width:100%;">
+                <paper-card heading="Hadoop administration" image="../images/bigdataadm.png" alt="Sailboat Harbor" class="white" on-tap="toggleoadm">
+                    <iron-collapse id="collapseoadm" style="width:100%;">
+
+                        <p>
+                            Proposed Hadoop Administration class Agenda
+                        </p>
+                        <div align="center">
+                            <table border="0" cellspacing="0" cellpadding="0" width="669">
+                                <tbody>
+                                <tr>
+                                    <td width="155" valign="top">
+                                        <p align="center">
+                                            <strong>Day 1 </strong>
+                                        </p>
+                                    </td>
+                                    <td width="132" valign="top">
+                                        <p align="center">
+                                            <strong>Day 2</strong>
+                                        </p>
+                                    </td>
+                                    <td width="133" valign="top">
+                                        <p align="center">
+                                            <strong>Day 3</strong>
+                                        </p>
+                                    </td>
+                                    <td width="133" valign="top">
+                                        <p align="center">
+                                            <strong>Day 4</strong>
+                                        </p>
+                                    </td>
+                                    <td width="116" valign="top">
+                                        <p align="center">
+                                            <strong>Day5</strong>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="155" valign="top">
+                                        <p align="left">
+                                            Introduction to Hadoop
+                                        </p>
+                                    </td>
+                                    <td width="132" valign="top">
+                                        <p align="left">
+                                            Ensuring Data Integrity
+                                        </p>
+                                    </td>
+                                    <td width="133" valign="top">
+                                        <p align="left">
+                                            Enterprise Data Movement
+                                        </p>
+                                    </td>
+                                    <td width="133" valign="top">
+                                        <p align="left">
+                                            Flume
+                                        </p>
+                                    </td>
+                                    <td width="116" valign="top">
+                                        <p align="left">
+                                            Backup and Recovery
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="155" valign="top">
+                                        <p align="left">
+                                            HDFS Architecture
+                                        </p>
+                                    </td>
+                                    <td width="132" valign="top">
+                                        <p align="left">
+                                            HDFS NFS Gateway
+                                        </p>
+                                    </td>
+                                    <td width="133" valign="top">
+                                        <p align="left">
+                                            HDFS Web Services
+                                        </p>
+                                    </td>
+                                    <td width="133" valign="top">
+                                        <p align="left">
+                                            Oozie
+                                        </p>
+                                    </td>
+                                    <td width="116" valign="top">
+                                        <p align="left">
+                                            Rack Awareness
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="155" valign="top">
+                                        <p align="left">
+                                            Installing Hadoop
+                                        </p>
+                                    </td>
+                                    <td width="132" valign="top">
+                                        <p align="left">
+                                            YARN &amp; MapReduce
+                                        </p>
+                                    </td>
+                                    <td width="133" valign="top">
+                                        <p align="left">
+                                            Hive Administration
+                                        </p>
+                                    </td>
+                                    <td width="133" valign="top">
+                                        <p align="left">
+                                            Monitoring HDP2 Services
+                                        </p>
+                                    </td>
+                                    <td width="116" valign="top">
+                                        <p align="left">
+                                            NameNode HA
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="155" valign="top">
+                                        <p align="left">
+                                            Configuring Hadoop
+                                        </p>
+                                    </td>
+                                    <td width="132" valign="top">
+                                        <p align="left">
+                                            Job Schedulers
+                                        </p>
+                                    </td>
+                                    <td width="133" valign="top">
+                                        <p align="left">
+                                            Sqoop
+                                        </p>
+                                    </td>
+                                    <td width="133" valign="top">
+                                        <p align="left">
+                                            Commissioning Nodes
+                                        </p>
+                                    </td>
+                                    <td width="116" valign="top">
+                                        <p align="left">
+                                            Securing HDP
+                                        </p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h1>
+                            Detailed Course content for each module
+                        </h1>
+                        <h1>
+                            1. Introduction to Hadoop
+                        </h1>
+                        <p>
+                            Enterprise Data Trends @ Scale
+                        </p>
+                        <p>
+                            What is Big Data?
+                        </p>
+                        <p>
+                            A Market for Big Data
+                        </p>
+                        <p>
+                            Most Common New Types of Data
+                        </p>
+                        <p>
+                            Moving from Causation to Correlation
+                        </p>
+                        <p>
+                            What is Hadoop?
+                        </p>
+                        <p>
+                            Traditional Systems vs. Hadoop
+                        </p>
+                        <p>
+                            What is Hadoop 2.0?
+                        </p>
+                        <p>
+                            Overview of a Hadoop Cluster
+                        </p>
+                        <p>
+                            Different distributions of Hadoop
+                        </p>
+                        <p>
+                            Hadoop Use Case
+                        </p>
+                        <p>
+                            Lab exercise :- Login to Your Cluster
+                        </p>
+                        <h1>
+                            2. HDFS Architecture
+                        </h1>
+                        <p>
+                            What is a File System?
+                        </p>
+                        <p>
+                            OS Architecture
+                        </p>
+                        <p>
+                            HDFS Architecture
+                        </p>
+                        <p>
+                            Understanding Block Storage
+                        </p>
+                        <p>
+                            Demonstration: Understanding Block Storage
+                        </p>
+                        <p>
+                            The NameNode
+                        </p>
+                        <p>
+                            The Data Nodes
+                        </p>
+                        <p>
+                            Data Node Failure
+                        </p>
+                        <p>
+                            HDFS Clients
+                        </p>
+                        <h1>
+                            3. Installing Hadoop
+                        </h1>
+                        <p>
+                            Minimum Hardware Requirements
+                        </p>
+                        <p>
+                            Minimum Software Requirements
+                        </p>
+                        <p>
+                            A Formidable Starter Cluster
+                        </p>
+                        <p>
+                            Lab exercise :- Setting up the Environment
+                        </p>
+                        <p>
+                            Lab exercise :- Install HDP 2.0 Cluster using Ambari
+                        </p>
+                        <h1>
+                            4. Configuring Hadoop
+                        </h1>
+                        <p>
+                            Configuration Considerations
+                        </p>
+                        <p>
+                            Deployment Layout
+                        </p>
+                        <p>
+                            Configuring HDFS
+                        </p>
+                        <p>
+                            What is Ambari
+                        </p>
+                        <p>
+                            Configuration via Ambari
+                        </p>
+                        <p>
+                            Management
+                        </p>
+                        <p>
+                            Monitoring
+                        </p>
+                        <p>
+                            REST API
+                        </p>
+                        <p>
+                            Lab exercise :- Add a New Node to the Cluster
+                        </p>
+                        <p>
+                            Lab exercise :- Stopping and Starting HDP Services
+                        </p>
+                        <p>
+                            Lab exercise :- Using HDFS Commands
+                        </p>
+                        <h1>
+                            5. Ensuring Data Integrity
+                        </h1>
+                        <p>
+                            Replication Placement
+                        </p>
+                        <p>
+                            Data Integrity – Writing Data
+                        </p>
+                        <p>
+                            Data Integrity – Reading Data
+                        </p>
+                        <p>
+                            Data Integrity – Block Scanning
+                        </p>
+                        <p>
+                            Running a File System Check
+                        </p>
+                        <p>
+                            What Does the File System Check Look For?
+                        </p>
+                        <p>
+                            hadoop fsck Syntax
+                        </p>
+                        <p>
+                            Data Integrity – File System Check: Commands &amp; Output
+                        </p>
+                        <p>
+                            Hadoop dfsadmin Command
+                        </p>
+                        <p>
+                            NameNode Information
+                        </p>
+                        <p>
+                            Changing the Replication Factor
+                        </p>
+                        <p>
+                            Lab exercise :- Verify Data with Block Scanner and fsck
+                        </p>
+                        <h1>
+                            6. HDFS NFS Gateway
+                        </h1>
+                        <p>
+                            HDFS NFS Gateway Introduction
+                        </p>
+                        <p>
+                            NFS Gateway Node
+                        </p>
+                        <p>
+                            Configuring the HDFS NFS Gateway
+                        </p>
+                        <p>
+                            Starting the NFS Gateway Service
+                        </p>
+                        <p>
+                            User Authentication
+                        </p>
+                        <p>
+                            Lab exercise: Mounting HDFS to a Local File System
+                        </p>
+                        <p>
+                            <strong></strong>
+                        </p>
+                        <h1>
+                            7. YARN Architecture and MapReduce
+                        </h1>
+                        <p>
+                            What is YARN?
+                        </p>
+                        <p>
+                            Hadoop as Next-Gen Platform
+                        </p>
+                        <p>
+                            Beyond MapReduce
+                        </p>
+                        <p>
+                            YARN Use Case
+                        </p>
+                        <p>
+                            YARN Bird’s Eye View
+                        </p>
+                        <p>
+                            Lifecycle of a YARN Application
+                        </p>
+                        <p>
+                            Resource Manager
+                        </p>
+                        <p>
+                            Node Manager
+                        </p>
+                        <p>
+                            MapReduce
+                        </p>
+                        <p>
+                            Understanding MapReduce
+                        </p>
+                        <p>
+                            Configuring YARN
+                        </p>
+                        <p>
+                            Configuring MapReduce tools
+                        </p>
+                        <p>
+                            Lab exercise :- Troubleshooting a MapReduce Job
+                        </p>
+                        <h1>
+                            8. Job Schedulers
+                        </h1>
+                        <p>
+                            Overview of Job Scheduling
+                        </p>
+                        <p>
+                            The Built-in Schedulers
+                        </p>
+                        <p>
+                            Overview of the Capacity Scheduler
+                        </p>
+                        <p>
+                            Configuring the Capacity Scheduler
+                        </p>
+                        <p>
+                            Defining Queues
+                        </p>
+                        <p>
+                            Configuring Capacity Limits
+                        </p>
+                        <p>
+                            Configuring User Limits
+                        </p>
+                        <p>
+                            Configuring Permissions
+                        </p>
+                        <p>
+                            Overview of the Fair Scheduler
+                        </p>
+                        <p>
+                            Multi-Tenancy Limits
+                        </p>
+                        <p>
+                            Lab exercise: Configuring the Capacity Scheduler
+                        </p>
+                        <h1>
+                            9. Enterprise Data Movement
+                        </h1>
+                        <p>
+                            Enterprise Data Movement
+                        </p>
+                        <p>
+                            Challenges with a Traditional ETL Platform
+                        </p>
+                        <p>
+                            Hadoop Based ETL Platform
+                        </p>
+                        <p>
+                            Data Ingestion
+                        </p>
+                        <p>
+                            Hadoop: Reducing Business Latency
+                        </p>
+                        <p>
+                            Defining Data Layers
+                        </p>
+                        <p>
+                            Distributed Copy (distcp) Command
+                        </p>
+                        <p>
+                            distcp Options
+                        </p>
+                        <p>
+                            Considerations for distcp
+                        </p>
+                        <p>
+                            Using distcp for Backups
+                        </p>
+                        <p>
+                            Lab exercise : Use distcp to Copy Data from a Remote Cluster
+                        </p>
+                        <h1>
+                            10. HDFS Web Services
+                        </h1>
+                        <p>
+                            What is WebHDFS ?
+                        </p>
+                        <p>
+                            Setting up WebHDFS
+                        </p>
+                        <p>
+                            Using WebHDFS
+                        </p>
+                        <p>
+                            WebHDFS Authentication
+                        </p>
+                        <p>
+                            Copying Files to HDFS
+                        </p>
+                        <p>
+                            Hadoop HDFS over HTTP
+                        </p>
+                        <p>
+                            Who Uses WebHCat REST API?
+                        </p>
+                        <p>
+                            Running WebHCat
+                        </p>
+                        <p>
+                            Using WebHCat
+                        </p>
+                        <p>
+                            Lab exercise : Using WebHDFS
+                        </p>
+                        <h1>
+                            11. Hive Administration
+                        </h1>
+                        <p>
+                            Introduction to Hive
+                        </p>
+                        <p>
+                            Comparing Hive with RDBMS
+                        </p>
+                        <p>
+                            Hive Components
+                        </p>
+                        <p>
+                            Hive MetaStore
+                        </p>
+                        <p>
+                            HiveServer2
+                        </p>
+                        <p>
+                            Hive Command Line Interface
+                        </p>
+                        <p>
+                            Processing Hive SQL Statements
+                        </p>
+                        <p>
+                            Defining a Hive-Managed Table
+                        </p>
+                        <p>
+                            Defining an External Table
+                        </p>
+                        <p>
+                            Loading Data into Hive
+                        </p>
+                        <p>
+                            Performing Queries
+                        </p>
+                        <p>
+                            Guidelines for Architecting Hive Data
+                        </p>
+                        <p>
+                            ORCFile Example
+                        </p>
+                        <p>
+                            Hive Tables
+                        </p>
+                        <p>
+                            Hive Query Optimizations
+                        </p>
+                        <p>
+                            Hive/MR verses Hive/Tez
+                        </p>
+                        <p>
+                            ORCFile Example
+                        </p>
+                        <p>
+                            Compression
+                        </p>
+                        <p>
+                            Hive Security
+                        </p>
+                        <p>
+                            Lab exercise :- Understanding Hive Tables
+                        </p>
+                        <h1>
+                            12. Sqoop
+                        </h1>
+                        <p>
+                            Overview of Sqoop
+                        </p>
+                        <p>
+                            The Sqoop Import Tool
+                        </p>
+                        <p>
+                            Importing a Table
+                        </p>
+                        <p>
+                            Importing Specific Columns
+                        </p>
+                        <p>
+                            Importing from a Query
+                        </p>
+                        <p>
+                            The Sqoop Export Tool
+                        </p>
+                        <p>
+                            Exporting to a Table
+                        </p>
+                        <p>
+                            Lab exercise :- Using Sqoop
+                        </p>
+                        <h1>
+                            13. Flume
+                        </h1>
+                        <p>
+                            Flume Introduction
+                        </p>
+                        <p>
+                            Installing Flume
+                        </p>
+                        <p>
+                            Flume Events
+                        </p>
+                        <p>
+                            Flume Sources
+                        </p>
+                        <p>
+                            Flume Channels
+                        </p>
+                        <p>
+                            Flume Channel Selectors
+                        </p>
+                        <p>
+                            Flume Channel Selector
+                        </p>
+                        <p>
+                            Flume Sinks
+                        </p>
+                        <p>
+                            Multiple Sinks
+                        </p>
+                        <p>
+                            Flume Interceptors
+                        </p>
+                        <p>
+                            Design Patters
+                        </p>
+                        <p>
+                            Configuring Individual Components
+                        </p>
+                        <p>
+                            Flume Netcat Source Example
+                        </p>
+                        <p>
+                            Flume Exec Source Example
+                        </p>
+                        <p>
+                            Flume Configuration
+                        </p>
+                        <p>
+                            Monitoring Flume
+                        </p>
+                        <p>
+                            Lab exercise :- Install and Test Flume
+                        </p>
+                        <h1>
+                            14. Oozie
+                        </h1>
+                        <p>
+                            Oozie Overview
+                        </p>
+                        <p>
+                            Oozie Components
+                        </p>
+                        <p>
+                            Jobs, Workflows, Coordinators, Bundles
+                        </p>
+                        <p>
+                            Workflow Actions and Decisions
+                        </p>
+                        <p>
+                            Oozie Job Submission
+                        </p>
+                        <p>
+                            Oozie Server Workflow Coordinator
+                        </p>
+                        <p>
+                            Oozie Console
+                        </p>
+                        <p>
+                            Interfaces to Oozie
+                        </p>
+                        <p>
+                            Oozie Server Configuration
+                        </p>
+                        <p>
+                            Oozie Scripts
+                        </p>
+                        <p>
+                            The Oozie CLI
+                        </p>
+                        <p>
+                            Using the Oozie CLI
+                        </p>
+                        <p>
+                            Submit Jobs through http
+                        </p>
+                        <p>
+                            Oozie Actions
+                        </p>
+                        <p>
+                            Oozie Metrics
+                        </p>
+                        <p>
+                            Lab exercise: Running an Oozie Workflow
+                        </p>
+                        <h1>
+                            15. Monitoring Hadoop Services
+                        </h1>
+                        <p>
+                            Ambari
+                        </p>
+                        <p>
+                            Monitoring Architecture
+                        </p>
+                        <p>
+                            Monitoring HDP2 Clusters
+                        </p>
+                        <p>
+                            Ambari Web Interfaces
+                        </p>
+                        <p>
+                            Ambari Services – HDFS
+                        </p>
+                        <p>
+                            Ganglia
+                        </p>
+                        <p>
+                            Ganglia Monitoring a Hadoop Cluster
+                        </p>
+                        <p>
+                            Nagios
+                        </p>
+                        <p>
+                            Nagios – Ambari Interface
+                        </p>
+                        <p>
+                            Nagios UI
+                        </p>
+                        <p>
+                            Configuring Nagios
+                        </p>
+                        <p>
+                            Monitoring JVM Processes
+                        </p>
+                        <p>
+                            Understanding JVM Memory
+                        </p>
+                        <p>
+                            Eclipse Memory Analyzer
+                        </p>
+                        <p>
+                            JVM Memory Heap Dump
+                        </p>
+                        <p>
+                            Java Management Extensions (JMX)
+                        </p>
+                        <h1>
+                            16. Commissioning Nodes
+                        </h1>
+                        <p>
+                            Architectural Review
+                        </p>
+                        <p>
+                            Decommissioning and Commissioning Nodes
+                        </p>
+                        <p>
+                            Decommissioning Worker Nodes
+                        </p>
+                        <p>
+                            Steps for Decommissioning a Worker Node
+                        </p>
+                        <p>
+                            Decommissioning Node States
+                        </p>
+                        <p>
+                            Steps for Commissioning a Worker Node
+                        </p>
+                        <p>
+                            Balancer
+                        </p>
+                        <p>
+                            Balancer Threshold Setting
+                        </p>
+                        <p>
+                            Configuring Balancer Bandwidth
+                        </p>
+                        <p>
+                            Lab exercise :- Commissioning &amp; Decommissioning Worker Nodes
+                        </p>
+                        <h1>
+                            17. Backup and Recovery
+                        </h1>
+                        <p>
+                            What should you backup?
+                        </p>
+                        <p>
+                            HDFS Snapshots
+                        </p>
+                        <p>
+                            HDFS Data – Backups
+                        </p>
+                        <p>
+                            HDFS Data – Automate &amp; Restore
+                        </p>
+                        <p>
+                            Hive &amp; Ambari Backup
+                        </p>
+                        <p>
+                            Lab exercise :- Using HDFS Snapshots
+                        </p>
+                        <h1>
+                            18. Rack Awareness
+                        </h1>
+                        <p>
+                            Rack Awareness
+                        </p>
+                        <p>
+                            YARN Rack Awareness
+                        </p>
+                        <p>
+                            Replica Placement
+                        </p>
+                        <p>
+                            Rack Topology
+                        </p>
+                        <p>
+                            Rack Topology Script
+                        </p>
+                        <p>
+                            Configuring the Rack Topology Script
+                        </p>
+                        <p>
+                            Lab exercise: Configuring Rack Awareness
+                        </p>
+                        <h1>
+                            19. Name Node High Availability
+                        </h1>
+                        <p>
+                            NameNode Architecture HDP1
+                        </p>
+                        <p>
+                            NameNode High Availability
+                        </p>
+                        <p>
+                            HDFS HA Components
+                        </p>
+                        <p>
+                            Understanding NameNode HA
+                        </p>
+                        <p>
+                            NameNodes in HA
+                        </p>
+                        <p>
+                            Failover Modes
+                        </p>
+                        <p>
+                            NameNode Architectures
+                        </p>
+                        <p>
+                            hdfs haadmin Command
+                        </p>
+                        <p>
+                            Protecting Metadata Repositories
+                        </p>
+                        <p>
+                            Red Hat HA
+                        </p>
+                        <p>
+                            VMware HA
+                        </p>
+                        <p>
+                            Lab exercise :- Configure NameNode High Availability using Ambari
+                        </p>
+                        <h1>
+                            20. Security in Hadoop
+                        </h1>
+                        <p>
+                            Security Concepts
+                        </p>
+                        <p>
+                            Kerberos Synopsis
+                        </p>
+                        <p>
+                            HDP Security Overview
+                        </p>
+                        <p>
+                            Securing HDP – Authentication
+                        </p>
+                        <p>
+                            Securing HDP – Authorization
+                        </p>
+                        <p>
+                            Lab exercise :- Securing a HDP Cluster
+                        </p>
+
+                    </iron-collapse>
+                </paper-card>
+
+                <paper-card heading="Hadoop development" image="../images/hadoopdev.png" alt="Sailboat Harbor" class="white" on-tap="toggleodev">
+                    <iron-collapse id="collapseodev" style="width:100%;">
+
+                        <h1>
+                            Hadoop Course Content (Development &amp; Administration)
+                        </h1>
+                        <h1>
+                            Hadoop Introduction
+                        </h1>
+                        <p>
+                            Introduction to Data and System
+                        </p>
+                        <p>
+                            Data Lifecycle Management
+                        </p>
+                        <p>
+                            Data Properties
+                        </p>
+                        <p>
+                            Types of Data
+                        </p>
+                        <p>
+                            Introduction of system
+                        </p>
+                        <p>
+                            Problems with traditional large-scale systems
+                        </p>
+                        <p>
+                            Types of Systems &amp; scaling
+                        </p>
+                        <p>
+                            What is Big Data
+                        </p>
+                        <p>
+                            Challenges in Big Data
+                        </p>
+                        <p>
+                            Challenges in Traditional Application
+                        </p>
+                        <p>
+                            New Requirements
+                        </p>
+                        <p>
+                            What is Hadoop
+                        </p>
+                        <p>
+                            Brief history of Hadoop
+                        </p>
+                        <p>
+                            Features of Hadoop
+                        </p>
+                        <p>
+                            Hadoop v/s RDBMS
+                        </p>
+                        <p>
+                            Hadoop Ecosystem’s overview
+                        </p>
+                        <h1>
+                            Administrate Hadoop Distribute file system(HDFS)
+                        </h1>
+                        <p>
+                            Concepts
+                        </p>
+                        <p>
+                            Blocks
+                        </p>
+                        <p>
+                            Replication
+                        </p>
+                        <p>
+                            Version File
+                        </p>
+                        <p>
+                            Safe mode
+                        </p>
+                        <p>
+                            Namespace IDs
+                        </p>
+                        <p>
+                            Reading and Writing in HDFS
+                        </p>
+                        <p>
+                            Understanding Name Node
+                        </p>
+                        <p>
+                            Understanding Data Node
+                        </p>
+                        <p>
+                            Understanding Secondary Name Node
+                        </p>
+                        <p>
+                            Understanding Job Tracker
+                        </p>
+                        <p>
+                            Understanding Task Tracker
+                        </p>
+                        <p>
+                            HDFS Shell Commands
+                        </p>
+                        <p>
+                            Hadoop Admin Commands
+                        </p>
+                        <p>
+                            Hands On Exercise
+                        </p>
+                        <p>
+                            Accessing HDFS using API
+                        </p>
+                        <p>
+                            Understanding HDFS Java classes and methods
+                        </p>
+                        <p>
+                            HDFS Next Generation Concepts.
+                        </p>
+                        <p>
+                            Hands On Exercise
+                        </p>
+                        <h1>
+                            Setting up Hadoop Cluster for Apache Hadoop
+                        </h1>
+                        <p>
+                            Installation in detail
+                        </p>
+                        <p>
+                            Creating Ubuntu image in VMware
+                        </p>
+                        <p>
+                            Downloading Hadoop
+                        </p>
+                        <p>
+                            Installing SSH
+                        </p>
+                        <p>
+                            Configuring Hadoop
+                        </p>
+                        <p>
+                            Download, Installation &amp; Configuration Hive
+                        </p>
+                        <p>
+                            Download, Installation &amp; Configuration Pig
+                        </p>
+                        <p>
+                            Download, Installation &amp; Configuration Sqoop
+                        </p>
+                        <p>
+                            Download, Installation &amp; Configuration Hive
+                        </p>
+                        <p>
+                            Installing MySQL in Hadoop cluster.
+                        </p>
+                        <p>
+                            Download and work with Cloudera Image.
+                        </p>
+                        <h1>
+                            Configuring Hadoop in Different Modes
+                        </h1>
+                        <p>
+                            Local Mode
+                        </p>
+                        <p>
+                            Running without HDFS
+                        </p>
+                        <p>
+                            Pseudo-distributed Mode
+                        </p>
+                        <p>
+                            Running all daemons in a single node
+                        </p>
+                        <p>
+                            Fully distributed mode
+                        </p>
+                        <p>
+                            Running daemons on dedicated nodes
+                        </p>
+                        <h1>
+                        </h1>
+                        <h1>
+                            Cluster Maintenance
+                        </h1>
+                        <p>
+                            Managing Hadoop Processes
+                        </p>
+                        <p>
+                            Starting and Stopping Processes with Init Scripts
+                        </p>
+                        <p>
+                            Starting and Stopping Processes Manually
+                        </p>
+                        <p>
+                            HDFS Maintenance Tasks
+                        </p>
+                        <p>
+                            Adding a Datanode
+                        </p>
+                        <p>
+                            Decommissioning a Datanode
+                        </p>
+                        <p>
+                            Checking Filesystem Integrity with fsck
+                        </p>
+                        <p>
+                            Balancing HDFS Block Data
+                        </p>
+                        <p>
+                            Dealing with a Failed Disk
+                        </p>
+                        <p>
+                            MapReduce Maintenance Tasks
+                        </p>
+                        <p>
+                            Adding a Tasktracker
+                        </p>
+                        <p>
+                            Decommissioning a Tasktracker
+                        </p>
+                        <p>
+                            Killing a MapReduce Job
+                        </p>
+                        <p>
+                            Killing a MapReduce Task
+                        </p>
+                        <p>
+                            Dealing with a Blacklisted Tasktracker
+                        </p>
+                        <h1>
+                        </h1>
+                        <h1>
+                            Map Reduce Programming
+                        </h1>
+                        <p>
+                            Understanding block and input splits
+                        </p>
+                        <p>
+                            Common Input and Output Formats
+                        </p>
+                        <p>
+                            MapReduce Data types
+                        </p>
+                        <p>
+                            Understanding Writable and WritableComparable (Introduction)
+                        </p>
+                        <p>
+                            Data Flow in MapReduce Application
+                        </p>
+                        <p>
+                            Understanding MapReduce problem on real datasets(stocks).
+                        </p>
+                        <p>
+                            MapReduce Skeleton in Details
+                        </p>
+                        <p>
+                            Writing MapReduce Application
+                        </p>
+                        <p>
+                            Understanding Mapper function
+                        </p>
+                        <p>
+                            Understanding Reducer Function
+                        </p>
+                        <p>
+                            Understanding Driver
+                        </p>
+                        <p>
+                            Understanding Tool Runner
+                        </p>
+                        <p>
+                            Hands on Exercise
+                        </p>
+                        <p>
+                            MapReduce Continued
+                        </p>
+                        <p>
+                            Using Combiner
+                        </p>
+                        <p>
+                            Using Distributed Cache
+                        </p>
+                        <p>
+                            Passing the parameters to mapper and reducer
+                        </p>
+                        <p>
+                            Hands On Exercise
+                        </p>
+                        <p>
+                            Writing Custom key values
+                        </p>
+                        <p>
+                            Hands On Exercise
+                        </p>
+                        <p>
+                            Designed Use Cases for common problems.
+                        </p>
+                        <h1>
+                        </h1>
+                        <h1>
+                            Advanced MapReduce Programming
+                        </h1>
+                        <p>
+                            MapReduce Chaining.
+                        </p>
+                        <p>
+                            Customized Input Formats and Output Formats
+                        </p>
+                        <h1>
+                        </h1>
+                        <h1>
+                        </h1>
+                        <h1>
+                            Monitoring and debugging on a Production Cluster
+                        </h1>
+                        <p>
+                            Counters
+                        </p>
+                        <p>
+                            Skipping Bad Records
+                        </p>
+                        <p>
+                            Running in local mode
+                        </p>
+                        <h1>
+                        </h1>
+                        <h1>
+                        </h1>
+                        <h1>
+                            Tuning for Performance in MapReduce
+                        </h1>
+                        <p>
+                            Reducing network traffic with combiner
+                        </p>
+                        <p>
+                            Partitioners
+                        </p>
+                        <p>
+                            Reducing the amount of input data
+                        </p>
+                        <p>
+                            Using Compression
+                        </p>
+                        <p>
+                            Reusing the JVM
+                        </p>
+                        <p>
+                            Running with speculative execution
+                        </p>
+                        <h1>
+                        </h1>
+                        <h1>
+                            Hive
+                        </h1>
+                        <p>
+                            Hive concepts
+                        </p>
+                        <p>
+                            Hive architecture
+                        </p>
+                        <p>
+                            Install and configure hive on cluster
+                        </p>
+                        <p>
+                            Different type of tables in hive
+                        </p>
+                        <p>
+                            Hive library functions
+                        </p>
+                        <p>
+                            Buckets
+                        </p>
+                        <p>
+                            Partitions
+                        </p>
+                        <p>
+                            Joins in hive
+                        </p>
+                        <p>
+                            Inner joins
+                        </p>
+                        <p>
+                            Outer Joins
+                        </p>
+                        <p>
+                            Hive UDF
+                        </p>
+                        <h1>
+                        </h1>
+                        <h1>
+                            PIG
+                        </h1>
+                        <p>
+                            Pig basics
+                        </p>
+                        <p>
+                            Install and configure PIG on a cluster
+                        </p>
+                        <p>
+                            PIG Library functions
+                        </p>
+                        <p>
+                            Pig Vs Hive
+                        </p>
+                        <p>
+                            Write sample Pig Latin scripts
+                        </p>
+                        <p>
+                            Modes of running PIG
+                        </p>
+                        <p>
+                            Running in Grunt shell
+                        </p>
+                        <p>
+                            Running as Java program
+                        </p>
+                        <p>
+                            PIG UDFs
+                        </p>
+                        <h1>
+                            Sqoop
+                        </h1>
+                        <p>
+                            Install and configure Sqoop on cluster
+                        </p>
+                        <p>
+                            Connecting to RDBMS
+                        </p>
+                        <p>
+                            Installing MySQL
+                        </p>
+                        <p>
+                            Import data from Oracle/MySQL to hive
+                        </p>
+                        <p>
+                            Export data to Oracle/MySQL
+                        </p>
+                        <p>
+                            Internal mechanism of import/export
+                        </p>
+                        <h1>
+                        </h1>
+                        <h1>
+                            HBase
+                        </h1>
+                        <p>
+                            HBase concepts
+                        </p>
+                        <p>
+                            HBase architecture
+                        </p>
+                        <p>
+                            Region server architecture
+                        </p>
+                        <p>
+                            File storage architecture
+                        </p>
+                        <p>
+                            HBase basics
+                        </p>
+                        <p>
+                            Column access
+                        </p>
+                        <p>
+                            Scans
+                        </p>
+                        <p>
+                            HBase use cases
+                        </p>
+                        <p>
+                            Install and configure HBase on a multi node cluster
+                        </p>
+                        <p>
+                            Create database, Develop and run sample applications
+                        </p>
+                        <p>
+                            Access data stored in HBase using clients like Java, Python and Pearl
+                        </p>
+                        <p>
+                            Map Reduce client to access the HBase data
+                        </p>
+
+                    </iron-collapse>
+                </paper-card>
+
+                <paper-card heading="Linux administration" image="../images/linux.png" alt="Sailboat Harbor" class="white" on-tap="toggleolin">
+                    <iron-collapse id="collapseolin" style="width:100%;">
+
+                        <p>
+                            ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­
+                        </p>
+                        <h1>
+                            <strong>UNIX / LINUX</strong>
+                            <strong></strong>
+                        </h1>
+                        <h1>
+                            <strong>Overview of Operating System</strong>
+                        </h1>
+                        <h1>
+                            <strong>History of Unix / Linux</strong>
+                        </h1>
+                        <h1>
+                            <strong>Linux file system architecture</strong>
+                        </h1>
+                        <h2>
+                            #Basic Commands
+                        </h2>
+                        <p>
+                            Pwd, who, ls
+                        </p>
+                        <p>
+                            exit, date, cal, exit, banner
+                        </p>
+                        <h2>
+                            #System Startup &amp; Shutdown
+                        </h2>
+                        <p>
+                            Init, halt, shutdown
+                        </p>
+                        <p>
+                            Different Run Levels
+                        </p>
+                        <h2>
+                            #Working with files
+                        </h2>
+                        <p>
+                            Cat, touch, rm
+                        </p>
+                        <p>
+                            Cp, mv, ln, wc
+                        </p>
+                        <h2>
+                            #Working with directories
+                        </h2>
+                        <p>
+                            Mkdir, cd, rmdir rm­r
+                        </p>
+                        <p>
+                            More, head, tail
+                        </p>
+                        <p>
+                            Comparing files: diff comm
+                        </p>
+                        <h2>
+                            #File compression
+                        </h2>
+                        <p>
+                            Zip files directories
+                        </p>
+                        <p>
+                            Gzip, gunzip, zcat, compress
+                        </p>
+                        <p>
+                            Uncompress , pack, unpack
+                        </p>
+                        <h2>
+                            #Searching files
+                        </h2>
+                        <p>
+                            Find, locate, which, whereis
+                        </p>
+                        <p>
+                            Standard Input &amp; Output
+                        </p>
+                        <p>
+                            Redirecting Output
+                        </p>
+                        <p>
+                            Redirecting Input
+                        </p>
+                        <h2>
+                            #Pattern searching
+                        </h2>
+                        <p>
+                            Grep, grep with options Fgrep, egrep
+                        </p>
+                        <h2>
+                            #Tools for columns data
+                        </h2>
+                        <p>
+                            Cut, paste
+                        </p>
+                        <p>
+                            Tools for sorting
+                        </p>
+                        <p>
+                            Sort by line
+                        </p>
+                        <p>
+                            Sort by fields
+                        </p>
+                        <p>
+                            Sort with options
+                        </p>
+                        <p>
+                            Uniq
+                        </p>
+                        <h2>
+                            #File Permissions
+                        </h2>
+                        <p>
+                            Chmod, chown, chgrp
+                        </p>
+                        <h2>
+                            #Communication commands
+                        </h2>
+                        <p>
+                            wall, mail, mail with options
+                        </p>
+                        <p>
+                            Networking commands
+                        </p>
+                        <p>
+                            telnet, ftp
+                        </p>
+                        <p>
+                            Disk status
+                        </p>
+                        <p>
+                            du, df, free
+                        </p>
+                        <p>
+                            Job control
+                        </p>
+                        <p>
+                            Foreground jobs
+                        </p>
+                        <p>
+                            Background jobs
+                        </p>
+                        <p>
+                            Killing jobs
+                        </p>
+                        <h2>
+                            #Process status
+                        </h2>
+                        <p>
+                            Ps, Ps with options
+                        </p>
+                        <h2>
+                            #Vim Editor
+                        </h2>
+                        <p>
+                            Command mode
+                        </p>
+                        <p>
+                            Insert mode
+                        </p>
+                        <p>
+                            Execution mode
+                        </p>
+                        <h1>
+                            <strong>Shell scripting</strong>
+                        </h1>
+                        <h2>
+                            #Getting into shell
+                        </h2>
+                        <p>
+                            ­ What is shell?
+                        </p>
+                        <p>
+                            ­ Different types of shells
+                        </p>
+                        <p>
+                            ­ what is shell scripting
+                        </p>
+                        <p>
+                            ­ Advantages of shell scripting
+                        </p>
+                        <h2>
+                            #Hello World shell
+                        </h2>
+                        <p>
+                            ­ what is shebang?
+                        </p>
+                        <p>
+                            ­ Usual Bash Best practices.
+                        </p>
+                        <p>
+                            ­ First program "The hello world"
+                        </p>
+                        <p>
+                            ­ Modes of execution of bash script: Normal mode, compilation mode
+                        </p>
+                        <p>
+                            ­ Variables in bash
+                        </p>
+                        <p>
+                            ­ Shell arthematics
+                        </p>
+                        <p>
+                            ­ Command status variables
+                        </p>
+                        <p>
+                            ­ String length and substring
+                        </p>
+                        <p>
+                            ­ Accepting input from user.
+                        </p>
+                        <p>
+                            ­ Capturing command line arguments
+                        </p>
+                        <h2>
+                            #Expression and Looping concepts
+                        </h2>
+                        <p>
+                            ­ Decision making if, if else, multi if conditions
+                        </p>
+                        <p>
+                            ­ AND OR with if conditions
+                        </p>
+                        <p>
+                            ­ string, numeric expression
+                        </p>
+                        <p>
+                            ­ Select loops
+                        </p>
+                        <p>
+                            ­ For loop
+                        </p>
+                        <p>
+                            ­ For in loop examples
+                        </p>
+                        <p>
+                            ­ While loop
+                        </p>
+                        <p>
+                            ­ Infinite loops: while and for loop
+                        </p>
+                        <p>
+                            ­ Break, continue the loop
+                        </p>
+                        <p>
+                            ­ Exercises questions of if expression, and switch
+                        </p>
+                        <h1>
+                            <strong>Case Examples</strong>
+                        </h1>
+                        <h2>
+                            #Playing with shortcuts
+                        </h2>
+                        <p>
+                            ­ Linux One lines, playing with awk sed
+                        </p>
+                        <h2>
+                            #Files
+                        </h2>
+                        <p>
+                            ­ Reading from file
+                        </p>
+                        <p>
+                            ­ Redirection, Appending
+                        </p>
+                        <h2>
+                            #Functions
+                        </h2>
+                        <p>
+                            ­ Simple Hello world function
+                        </p>
+                        <p>
+                            ­ Local and global variables in function
+                        </p>
+                        <p>
+                            ­ Passing parameter positional parameters
+                        </p>
+                        <h2>
+                            #Real-time use cases
+                        </h2>
+                        <p>
+                            ­ What is cron job and Setting up cron jobs
+                        </p>
+                        <p>
+                            ­ System Admin tasks and setting Alerts
+                        </p>
+                        <p>
+                            ­ File backups with compression techniques
+                        </p>
+                        <p>
+                            ­ DB related scripts: Use case MySQL
+                        </p>
+
+
+                    </iron-collapse>
+                </paper-card>
+
+                <paper-card heading="Python" image="../images/python.png" alt="Sailboat Harbor" class="white" on-tap="toggleopyt">
+                    <iron-collapse id="collapseopyt" style="width:100%;">
+
+
+                        <h1>
+                            Introduction to Python
+                        </h1>
+                        <p>
+                            History of Python
+                        </p>
+                        <p>
+                            Features
+                        </p>
+                        <p>
+                            Installing Python
+                        </p>
+                        <p>
+                            Basic Syntax
+                        </p>
+                        <h1>
+                            Getting Started
+                        </h1>
+                        <p>
+                            Running Python from DOS prompt
+                        </p>
+                        <p>
+                            Using the Python IDE
+                        </p>
+                        <h1>
+                            Language Basics
+                        </h1>
+                        <p>
+                            Operators
+                        </p>
+                        <p>
+                            Numbers
+                        </p>
+                        <p>
+                            Strings
+                        </p>
+                        <p>
+                            Boolean
+                        </p>
+                        <p>
+                            Variables
+                        </p>
+                        <p>
+                            Scoping and Expressions
+                        </p>
+                        <p>
+                            Use of tabs and whitespaces as indent
+                        </p>
+                        <h1>
+                            Collections
+                        </h1>
+                        <p>
+                            Lists
+                        </p>
+                        <p>
+                            Tuples
+                        </p>
+                        <p>
+                            Dictionaries
+                        </p>
+                        <p>
+                            Built-in-Functions/Methods
+                        </p>
+                        <h1>
+                            Decision-Making
+                        </h1>
+                        <p>
+                            If
+                        </p>
+                        <p>
+                            If-else
+                        </p>
+                        <p>
+                            Nested if-else
+                        </p>
+                        <h1>
+                            Loops
+                        </h1>
+                        <p>
+                            For
+                        </p>
+                        <p>
+                            While
+                        </p>
+                        <p>
+                            Nested Loops
+                        </p>
+                        <h1>
+                            Control Statements
+                        </h1>
+                        <p>
+                            Break
+                        </p>
+                        <p>
+                            Continue
+                        </p>
+                        <p>
+                            Pass
+                        </p>
+                        <h1>
+                            Functions
+                        </h1>
+                        <p>
+                            Creating user-defined functions
+                        </p>
+                        <p>
+                            Passing functions
+                        </p>
+                        <p>
+                            Function Arguments
+                        </p>
+                        <p>
+                            Function Arguments with default values
+                        </p>
+                        <p>
+                            Keyword Arguments
+                        </p>
+                        <p>
+                            Variable Length Arguments
+                        </p>
+                        <p>
+                            Variable Length Keyword Arguments
+                        </p>
+                        <p>
+                            Anonymous Functions
+                        </p>
+                        <p>
+                            DocStrings
+                        </p>
+                        <h1>
+                            Modules
+                        </h1>
+                        <p>
+                            Introduction to Modules
+                        </p>
+                        <p>
+                            Locating Modules
+                        </p>
+                        <p>
+                            Global and Local namespaces
+                        </p>
+                        <p>
+                            Creating your own modules
+                        </p>
+                        <p>
+                            Using modules
+                        </p>
+                        <p>
+                            Downloading and installing modules
+                        </p>
+                        <h1>
+                            Files
+                        </h1>
+                        <p>
+                            Printing to the Screen
+                        </p>
+                        <p>
+                            File I/O operations
+                        </p>
+                        <p>
+                            File Object Methods
+                        </p>
+                        <p>
+                            OS Object Methods
+                        </p>
+                        <h1>
+                            Exceptions
+                        </h1>
+                        <p>
+                            Introduction to exceptions
+                        </p>
+                        <p>
+                            Handling exceptions
+                        </p>
+                        <p>
+                            Creating exceptions
+                        </p>
+                        <p>
+                            Standard Exceptions
+                        </p>
+                        <p>
+                            Examples
+                        </p>
+                        <h1>
+                            Document Strings
+                        </h1>
+                        <p>
+                            Creating Doc Strings
+                        </p>
+                        <p>
+                            Accessing Doc Strings
+                        </p>
+                        <h1>
+                            Object Oriented Programming Basics
+                        </h1>
+                        <p>
+                            Introduction to OOPs
+                        </p>
+                        <p>
+                            Creating Classes
+                        </p>
+                        <p>
+                            Creating and accessing class methods
+                        </p>
+                        <p>
+                            Inheritance
+                        </p>
+                        <h1>
+                            Additional
+                        </h1>
+                        <p>
+                            Practice basic programming concepts with python.
+                        </p>
+                        <p>
+                            Exercises on understanding conditional constructs and loops
+                        </p>
+                        <p>
+                            Practice various string operators, functions and built-in methods
+                        </p>
+                        <p>
+                            Practice exercises on Lists, Tuples and Dictionary
+                        </p>
+                        <p>
+                            Practice exercises on dictionaries, functions and modules
+                        </p>
+                        <p>
+                            Practice exercises on file operations
+                        </p>
+                        <p>
+                            Practice exercises on file and os related features
+                        </p>
+                        <p>
+                            Practice exercises on Exceptions
+                        </p>
+                        <p>
+                            Exercises on OOPS
+                        </p>
+
+                    </iron-collapse>
+                </paper-card>
+
+                <!--<paper-card heading="AWS" image="../images/big_data.png" alt="Sailboat Harbor" class="white" on-tap="toggleoaws">
+                    <iron-collapse id="collapseoaws" style="width:100%;">
+                        <p> Leverage experienced data scientists and methodologies to implement advanced models and algorithms that separate the signals from the noise, discover patterns in the data, and provide predictive insights. We are skilled in machine learning, natural language processing, enterprise search and advanced statistical and mathematical decision science. We are experienced in a broad range of industries such as banking and financial services, telecommunications, travel and entertainment, digital media, healthcare, manufacturing and others.</p>
+
+                        <p>  To help you apply advanced decision science within your business, contact us.</p>
+                    </iron-collapse>
+                </paper-card>-->
+            </iron-collapse>
+          </paper-card>
+        </li>
+      </iron-swipeable-container>
+
+      <li class="item1">
+        <paper-card heading="Corporate Training" image="../images/corporate.png" alt="Sailboat Harbor" class="white" >
+          <div class="card-content">
+              <a on-tap="toggle1">
+              Click to Know More (or) Swipe to know about other services.
+              </a>
+          </div>
+          <iron-collapse id="collapse1" style="width:100%;">
+              <paper-card heading="Hadoop administration" image="../images/bigdataadm.png" alt="Sailboat Harbor" class="white" on-tap="togglecadm">
+                  <iron-collapse id="collapsecadm" style="width:100%;">
+
+
+                      <p>
+                          Proposed Hadoop Administration class Agenda
+                      </p>
+                      <div align="center">
+                          <table border="0" cellspacing="0" cellpadding="0" width="669">
+                              <tbody>
+                              <tr>
+                                  <td width="155" valign="top">
+                                      <p align="center">
+                                          <strong>Day 1 </strong>
+                                      </p>
+                                  </td>
+                                  <td width="132" valign="top">
+                                      <p align="center">
+                                          <strong>Day 2</strong>
+                                      </p>
+                                  </td>
+                                  <td width="133" valign="top">
+                                      <p align="center">
+                                          <strong>Day 3</strong>
+                                      </p>
+                                  </td>
+                                  <td width="133" valign="top">
+                                      <p align="center">
+                                          <strong>Day 4</strong>
+                                      </p>
+                                  </td>
+                                  <td width="116" valign="top">
+                                      <p align="center">
+                                          <strong>Day5</strong>
+                                      </p>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="155" valign="top">
+                                      <p align="left">
+                                          Introduction to Hadoop
+                                      </p>
+                                  </td>
+                                  <td width="132" valign="top">
+                                      <p align="left">
+                                          Ensuring Data Integrity
+                                      </p>
+                                  </td>
+                                  <td width="133" valign="top">
+                                      <p align="left">
+                                          Enterprise Data Movement
+                                      </p>
+                                  </td>
+                                  <td width="133" valign="top">
+                                      <p align="left">
+                                          Flume
+                                      </p>
+                                  </td>
+                                  <td width="116" valign="top">
+                                      <p align="left">
+                                          Backup and Recovery
+                                      </p>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="155" valign="top">
+                                      <p align="left">
+                                          HDFS Architecture
+                                      </p>
+                                  </td>
+                                  <td width="132" valign="top">
+                                      <p align="left">
+                                          HDFS NFS Gateway
+                                      </p>
+                                  </td>
+                                  <td width="133" valign="top">
+                                      <p align="left">
+                                          HDFS Web Services
+                                      </p>
+                                  </td>
+                                  <td width="133" valign="top">
+                                      <p align="left">
+                                          Oozie
+                                      </p>
+                                  </td>
+                                  <td width="116" valign="top">
+                                      <p align="left">
+                                          Rack Awareness
+                                      </p>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="155" valign="top">
+                                      <p align="left">
+                                          Installing Hadoop
+                                      </p>
+                                  </td>
+                                  <td width="132" valign="top">
+                                      <p align="left">
+                                          YARN &amp; MapReduce
+                                      </p>
+                                  </td>
+                                  <td width="133" valign="top">
+                                      <p align="left">
+                                          Hive Administration
+                                      </p>
+                                  </td>
+                                  <td width="133" valign="top">
+                                      <p align="left">
+                                          Monitoring HDP2 Services
+                                      </p>
+                                  </td>
+                                  <td width="116" valign="top">
+                                      <p align="left">
+                                          NameNode HA
+                                      </p>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="155" valign="top">
+                                      <p align="left">
+                                          Configuring Hadoop
+                                      </p>
+                                  </td>
+                                  <td width="132" valign="top">
+                                      <p align="left">
+                                          Job Schedulers
+                                      </p>
+                                  </td>
+                                  <td width="133" valign="top">
+                                      <p align="left">
+                                          Sqoop
+                                      </p>
+                                  </td>
+                                  <td width="133" valign="top">
+                                      <p align="left">
+                                          Commissioning Nodes
+                                      </p>
+                                  </td>
+                                  <td width="116" valign="top">
+                                      <p align="left">
+                                          Securing HDP
+                                      </p>
+                                  </td>
+                              </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                      <h1>
+                          Detailed Course content for each module
+                      </h1>
+                      <h1>
+                          1. Introduction to Hadoop
+                      </h1>
+                      <p>
+                          Enterprise Data Trends @ Scale
+                      </p>
+                      <p>
+                          What is Big Data?
+                      </p>
+                      <p>
+                          A Market for Big Data
+                      </p>
+                      <p>
+                          Most Common New Types of Data
+                      </p>
+                      <p>
+                          Moving from Causation to Correlation
+                      </p>
+                      <p>
+                          What is Hadoop?
+                      </p>
+                      <p>
+                          Traditional Systems vs. Hadoop
+                      </p>
+                      <p>
+                          What is Hadoop 2.0?
+                      </p>
+                      <p>
+                          Overview of a Hadoop Cluster
+                      </p>
+                      <p>
+                          Different distributions of Hadoop
+                      </p>
+                      <p>
+                          Hadoop Use Case
+                      </p>
+                      <p>
+                          Lab exercise :- Login to Your Cluster
+                      </p>
+                      <h1>
+                          2. HDFS Architecture
+                      </h1>
+                      <p>
+                          What is a File System?
+                      </p>
+                      <p>
+                          OS Architecture
+                      </p>
+                      <p>
+                          HDFS Architecture
+                      </p>
+                      <p>
+                          Understanding Block Storage
+                      </p>
+                      <p>
+                          Demonstration: Understanding Block Storage
+                      </p>
+                      <p>
+                          The NameNode
+                      </p>
+                      <p>
+                          The Data Nodes
+                      </p>
+                      <p>
+                          Data Node Failure
+                      </p>
+                      <p>
+                          HDFS Clients
+                      </p>
+                      <h1>
+                          3. Installing Hadoop
+                      </h1>
+                      <p>
+                          Minimum Hardware Requirements
+                      </p>
+                      <p>
+                          Minimum Software Requirements
+                      </p>
+                      <p>
+                          A Formidable Starter Cluster
+                      </p>
+                      <p>
+                          Lab exercise :- Setting up the Environment
+                      </p>
+                      <p>
+                          Lab exercise :- Install HDP 2.0 Cluster using Ambari
+                      </p>
+                      <h1>
+                          4. Configuring Hadoop
+                      </h1>
+                      <p>
+                          Configuration Considerations
+                      </p>
+                      <p>
+                          Deployment Layout
+                      </p>
+                      <p>
+                          Configuring HDFS
+                      </p>
+                      <p>
+                          What is Ambari
+                      </p>
+                      <p>
+                          Configuration via Ambari
+                      </p>
+                      <p>
+                          Management
+                      </p>
+                      <p>
+                          Monitoring
+                      </p>
+                      <p>
+                          REST API
+                      </p>
+                      <p>
+                          Lab exercise :- Add a New Node to the Cluster
+                      </p>
+                      <p>
+                          Lab exercise :- Stopping and Starting HDP Services
+                      </p>
+                      <p>
+                          Lab exercise :- Using HDFS Commands
+                      </p>
+                      <h1>
+                          5. Ensuring Data Integrity
+                      </h1>
+                      <p>
+                          Replication Placement
+                      </p>
+                      <p>
+                          Data Integrity – Writing Data
+                      </p>
+                      <p>
+                          Data Integrity – Reading Data
+                      </p>
+                      <p>
+                          Data Integrity – Block Scanning
+                      </p>
+                      <p>
+                          Running a File System Check
+                      </p>
+                      <p>
+                          What Does the File System Check Look For?
+                      </p>
+                      <p>
+                          hadoop fsck Syntax
+                      </p>
+                      <p>
+                          Data Integrity – File System Check: Commands &amp; Output
+                      </p>
+                      <p>
+                          Hadoop dfsadmin Command
+                      </p>
+                      <p>
+                          NameNode Information
+                      </p>
+                      <p>
+                          Changing the Replication Factor
+                      </p>
+                      <p>
+                          Lab exercise :- Verify Data with Block Scanner and fsck
+                      </p>
+                      <h1>
+                          6. HDFS NFS Gateway
+                      </h1>
+                      <p>
+                          HDFS NFS Gateway Introduction
+                      </p>
+                      <p>
+                          NFS Gateway Node
+                      </p>
+                      <p>
+                          Configuring the HDFS NFS Gateway
+                      </p>
+                      <p>
+                          Starting the NFS Gateway Service
+                      </p>
+                      <p>
+                          User Authentication
+                      </p>
+                      <p>
+                          Lab exercise: Mounting HDFS to a Local File System
+                      </p>
+                      <p>
+                          <strong></strong>
+                      </p>
+                      <h1>
+                          7. YARN Architecture and MapReduce
+                      </h1>
+                      <p>
+                          What is YARN?
+                      </p>
+                      <p>
+                          Hadoop as Next-Gen Platform
+                      </p>
+                      <p>
+                          Beyond MapReduce
+                      </p>
+                      <p>
+                          YARN Use Case
+                      </p>
+                      <p>
+                          YARN Bird’s Eye View
+                      </p>
+                      <p>
+                          Lifecycle of a YARN Application
+                      </p>
+                      <p>
+                          Resource Manager
+                      </p>
+                      <p>
+                          Node Manager
+                      </p>
+                      <p>
+                          MapReduce
+                      </p>
+                      <p>
+                          Understanding MapReduce
+                      </p>
+                      <p>
+                          Configuring YARN
+                      </p>
+                      <p>
+                          Configuring MapReduce tools
+                      </p>
+                      <p>
+                          Lab exercise :- Troubleshooting a MapReduce Job
+                      </p>
+                      <h1>
+                          8. Job Schedulers
+                      </h1>
+                      <p>
+                          Overview of Job Scheduling
+                      </p>
+                      <p>
+                          The Built-in Schedulers
+                      </p>
+                      <p>
+                          Overview of the Capacity Scheduler
+                      </p>
+                      <p>
+                          Configuring the Capacity Scheduler
+                      </p>
+                      <p>
+                          Defining Queues
+                      </p>
+                      <p>
+                          Configuring Capacity Limits
+                      </p>
+                      <p>
+                          Configuring User Limits
+                      </p>
+                      <p>
+                          Configuring Permissions
+                      </p>
+                      <p>
+                          Overview of the Fair Scheduler
+                      </p>
+                      <p>
+                          Multi-Tenancy Limits
+                      </p>
+                      <p>
+                          Lab exercise: Configuring the Capacity Scheduler
+                      </p>
+                      <h1>
+                          9. Enterprise Data Movement
+                      </h1>
+                      <p>
+                          Enterprise Data Movement
+                      </p>
+                      <p>
+                          Challenges with a Traditional ETL Platform
+                      </p>
+                      <p>
+                          Hadoop Based ETL Platform
+                      </p>
+                      <p>
+                          Data Ingestion
+                      </p>
+                      <p>
+                          Hadoop: Reducing Business Latency
+                      </p>
+                      <p>
+                          Defining Data Layers
+                      </p>
+                      <p>
+                          Distributed Copy (distcp) Command
+                      </p>
+                      <p>
+                          distcp Options
+                      </p>
+                      <p>
+                          Considerations for distcp
+                      </p>
+                      <p>
+                          Using distcp for Backups
+                      </p>
+                      <p>
+                          Lab exercise : Use distcp to Copy Data from a Remote Cluster
+                      </p>
+                      <h1>
+                          10. HDFS Web Services
+                      </h1>
+                      <p>
+                          What is WebHDFS ?
+                      </p>
+                      <p>
+                          Setting up WebHDFS
+                      </p>
+                      <p>
+                          Using WebHDFS
+                      </p>
+                      <p>
+                          WebHDFS Authentication
+                      </p>
+                      <p>
+                          Copying Files to HDFS
+                      </p>
+                      <p>
+                          Hadoop HDFS over HTTP
+                      </p>
+                      <p>
+                          Who Uses WebHCat REST API?
+                      </p>
+                      <p>
+                          Running WebHCat
+                      </p>
+                      <p>
+                          Using WebHCat
+                      </p>
+                      <p>
+                          Lab exercise : Using WebHDFS
+                      </p>
+                      <h1>
+                          11. Hive Administration
+                      </h1>
+                      <p>
+                          Introduction to Hive
+                      </p>
+                      <p>
+                          Comparing Hive with RDBMS
+                      </p>
+                      <p>
+                          Hive Components
+                      </p>
+                      <p>
+                          Hive MetaStore
+                      </p>
+                      <p>
+                          HiveServer2
+                      </p>
+                      <p>
+                          Hive Command Line Interface
+                      </p>
+                      <p>
+                          Processing Hive SQL Statements
+                      </p>
+                      <p>
+                          Defining a Hive-Managed Table
+                      </p>
+                      <p>
+                          Defining an External Table
+                      </p>
+                      <p>
+                          Loading Data into Hive
+                      </p>
+                      <p>
+                          Performing Queries
+                      </p>
+                      <p>
+                          Guidelines for Architecting Hive Data
+                      </p>
+                      <p>
+                          ORCFile Example
+                      </p>
+                      <p>
+                          Hive Tables
+                      </p>
+                      <p>
+                          Hive Query Optimizations
+                      </p>
+                      <p>
+                          Hive/MR verses Hive/Tez
+                      </p>
+                      <p>
+                          ORCFile Example
+                      </p>
+                      <p>
+                          Compression
+                      </p>
+                      <p>
+                          Hive Security
+                      </p>
+                      <p>
+                          Lab exercise :- Understanding Hive Tables
+                      </p>
+                      <h1>
+                          12. Sqoop
+                      </h1>
+                      <p>
+                          Overview of Sqoop
+                      </p>
+                      <p>
+                          The Sqoop Import Tool
+                      </p>
+                      <p>
+                          Importing a Table
+                      </p>
+                      <p>
+                          Importing Specific Columns
+                      </p>
+                      <p>
+                          Importing from a Query
+                      </p>
+                      <p>
+                          The Sqoop Export Tool
+                      </p>
+                      <p>
+                          Exporting to a Table
+                      </p>
+                      <p>
+                          Lab exercise :- Using Sqoop
+                      </p>
+                      <h1>
+                          13. Flume
+                      </h1>
+                      <p>
+                          Flume Introduction
+                      </p>
+                      <p>
+                          Installing Flume
+                      </p>
+                      <p>
+                          Flume Events
+                      </p>
+                      <p>
+                          Flume Sources
+                      </p>
+                      <p>
+                          Flume Channels
+                      </p>
+                      <p>
+                          Flume Channel Selectors
+                      </p>
+                      <p>
+                          Flume Channel Selector
+                      </p>
+                      <p>
+                          Flume Sinks
+                      </p>
+                      <p>
+                          Multiple Sinks
+                      </p>
+                      <p>
+                          Flume Interceptors
+                      </p>
+                      <p>
+                          Design Patters
+                      </p>
+                      <p>
+                          Configuring Individual Components
+                      </p>
+                      <p>
+                          Flume Netcat Source Example
+                      </p>
+                      <p>
+                          Flume Exec Source Example
+                      </p>
+                      <p>
+                          Flume Configuration
+                      </p>
+                      <p>
+                          Monitoring Flume
+                      </p>
+                      <p>
+                          Lab exercise :- Install and Test Flume
+                      </p>
+                      <h1>
+                          14. Oozie
+                      </h1>
+                      <p>
+                          Oozie Overview
+                      </p>
+                      <p>
+                          Oozie Components
+                      </p>
+                      <p>
+                          Jobs, Workflows, Coordinators, Bundles
+                      </p>
+                      <p>
+                          Workflow Actions and Decisions
+                      </p>
+                      <p>
+                          Oozie Job Submission
+                      </p>
+                      <p>
+                          Oozie Server Workflow Coordinator
+                      </p>
+                      <p>
+                          Oozie Console
+                      </p>
+                      <p>
+                          Interfaces to Oozie
+                      </p>
+                      <p>
+                          Oozie Server Configuration
+                      </p>
+                      <p>
+                          Oozie Scripts
+                      </p>
+                      <p>
+                          The Oozie CLI
+                      </p>
+                      <p>
+                          Using the Oozie CLI
+                      </p>
+                      <p>
+                          Submit Jobs through http
+                      </p>
+                      <p>
+                          Oozie Actions
+                      </p>
+                      <p>
+                          Oozie Metrics
+                      </p>
+                      <p>
+                          Lab exercise: Running an Oozie Workflow
+                      </p>
+                      <h1>
+                          15. Monitoring Hadoop Services
+                      </h1>
+                      <p>
+                          Ambari
+                      </p>
+                      <p>
+                          Monitoring Architecture
+                      </p>
+                      <p>
+                          Monitoring HDP2 Clusters
+                      </p>
+                      <p>
+                          Ambari Web Interfaces
+                      </p>
+                      <p>
+                          Ambari Services – HDFS
+                      </p>
+                      <p>
+                          Ganglia
+                      </p>
+                      <p>
+                          Ganglia Monitoring a Hadoop Cluster
+                      </p>
+                      <p>
+                          Nagios
+                      </p>
+                      <p>
+                          Nagios – Ambari Interface
+                      </p>
+                      <p>
+                          Nagios UI
+                      </p>
+                      <p>
+                          Configuring Nagios
+                      </p>
+                      <p>
+                          Monitoring JVM Processes
+                      </p>
+                      <p>
+                          Understanding JVM Memory
+                      </p>
+                      <p>
+                          Eclipse Memory Analyzer
+                      </p>
+                      <p>
+                          JVM Memory Heap Dump
+                      </p>
+                      <p>
+                          Java Management Extensions (JMX)
+                      </p>
+                      <h1>
+                          16. Commissioning Nodes
+                      </h1>
+                      <p>
+                          Architectural Review
+                      </p>
+                      <p>
+                          Decommissioning and Commissioning Nodes
+                      </p>
+                      <p>
+                          Decommissioning Worker Nodes
+                      </p>
+                      <p>
+                          Steps for Decommissioning a Worker Node
+                      </p>
+                      <p>
+                          Decommissioning Node States
+                      </p>
+                      <p>
+                          Steps for Commissioning a Worker Node
+                      </p>
+                      <p>
+                          Balancer
+                      </p>
+                      <p>
+                          Balancer Threshold Setting
+                      </p>
+                      <p>
+                          Configuring Balancer Bandwidth
+                      </p>
+                      <p>
+                          Lab exercise :- Commissioning &amp; Decommissioning Worker Nodes
+                      </p>
+                      <h1>
+                          17. Backup and Recovery
+                      </h1>
+                      <p>
+                          What should you backup?
+                      </p>
+                      <p>
+                          HDFS Snapshots
+                      </p>
+                      <p>
+                          HDFS Data – Backups
+                      </p>
+                      <p>
+                          HDFS Data – Automate &amp; Restore
+                      </p>
+                      <p>
+                          Hive &amp; Ambari Backup
+                      </p>
+                      <p>
+                          Lab exercise :- Using HDFS Snapshots
+                      </p>
+                      <h1>
+                          18. Rack Awareness
+                      </h1>
+                      <p>
+                          Rack Awareness
+                      </p>
+                      <p>
+                          YARN Rack Awareness
+                      </p>
+                      <p>
+                          Replica Placement
+                      </p>
+                      <p>
+                          Rack Topology
+                      </p>
+                      <p>
+                          Rack Topology Script
+                      </p>
+                      <p>
+                          Configuring the Rack Topology Script
+                      </p>
+                      <p>
+                          Lab exercise: Configuring Rack Awareness
+                      </p>
+                      <h1>
+                          19. Name Node High Availability
+                      </h1>
+                      <p>
+                          NameNode Architecture HDP1
+                      </p>
+                      <p>
+                          NameNode High Availability
+                      </p>
+                      <p>
+                          HDFS HA Components
+                      </p>
+                      <p>
+                          Understanding NameNode HA
+                      </p>
+                      <p>
+                          NameNodes in HA
+                      </p>
+                      <p>
+                          Failover Modes
+                      </p>
+                      <p>
+                          NameNode Architectures
+                      </p>
+                      <p>
+                          hdfs haadmin Command
+                      </p>
+                      <p>
+                          Protecting Metadata Repositories
+                      </p>
+                      <p>
+                          Red Hat HA
+                      </p>
+                      <p>
+                          VMware HA
+                      </p>
+                      <p>
+                          Lab exercise :- Configure NameNode High Availability using Ambari
+                      </p>
+                      <h1>
+                          20. Security in Hadoop
+                      </h1>
+                      <p>
+                          Security Concepts
+                      </p>
+                      <p>
+                          Kerberos Synopsis
+                      </p>
+                      <p>
+                          HDP Security Overview
+                      </p>
+                      <p>
+                          Securing HDP – Authentication
+                      </p>
+                      <p>
+                          Securing HDP – Authorization
+                      </p>
+                      <p>
+                          Lab exercise :- Securing a HDP Cluster
+                      </p>
+
+
+
+
+
+                  </iron-collapse>
+              </paper-card>
+
+              <paper-card heading="Hadoop development" image="../images/hadoopdev.png" alt="Sailboat Harbor" class="white" on-tap="togglecdev">
+                  <iron-collapse id="collapsecdev" style="width:100%;">
+
+                      <h1>
+                          Hadoop Course Content (Development &amp; Administration)
+                      </h1>
+                      <h1>
+                          Hadoop Introduction
+                      </h1>
+                      <p>
+                          Introduction to Data and System
+                      </p>
+                      <p>
+                          Data Lifecycle Management
+                      </p>
+                      <p>
+                          Data Properties
+                      </p>
+                      <p>
+                          Types of Data
+                      </p>
+                      <p>
+                          Introduction of system
+                      </p>
+                      <p>
+                          Problems with traditional large-scale systems
+                      </p>
+                      <p>
+                          Types of Systems &amp; scaling
+                      </p>
+                      <p>
+                          What is Big Data
+                      </p>
+                      <p>
+                          Challenges in Big Data
+                      </p>
+                      <p>
+                          Challenges in Traditional Application
+                      </p>
+                      <p>
+                          New Requirements
+                      </p>
+                      <p>
+                          What is Hadoop
+                      </p>
+                      <p>
+                          Brief history of Hadoop
+                      </p>
+                      <p>
+                          Features of Hadoop
+                      </p>
+                      <p>
+                          Hadoop v/s RDBMS
+                      </p>
+                      <p>
+                          Hadoop Ecosystem’s overview
+                      </p>
+                      <h1>
+                          Administrate Hadoop Distribute file system(HDFS)
+                      </h1>
+                      <p>
+                          Concepts
+                      </p>
+                      <p>
+                          Blocks
+                      </p>
+                      <p>
+                          Replication
+                      </p>
+                      <p>
+                          Version File
+                      </p>
+                      <p>
+                          Safe mode
+                      </p>
+                      <p>
+                          Namespace IDs
+                      </p>
+                      <p>
+                          Reading and Writing in HDFS
+                      </p>
+                      <p>
+                          Understanding Name Node
+                      </p>
+                      <p>
+                          Understanding Data Node
+                      </p>
+                      <p>
+                          Understanding Secondary Name Node
+                      </p>
+                      <p>
+                          Understanding Job Tracker
+                      </p>
+                      <p>
+                          Understanding Task Tracker
+                      </p>
+                      <p>
+                          HDFS Shell Commands
+                      </p>
+                      <p>
+                          Hadoop Admin Commands
+                      </p>
+                      <p>
+                          Hands On Exercise
+                      </p>
+                      <p>
+                          Accessing HDFS using API
+                      </p>
+                      <p>
+                          Understanding HDFS Java classes and methods
+                      </p>
+                      <p>
+                          HDFS Next Generation Concepts.
+                      </p>
+                      <p>
+                          Hands On Exercise
+                      </p>
+                      <h1>
+                          Setting up Hadoop Cluster for Apache Hadoop
+                      </h1>
+                      <p>
+                          Installation in detail
+                      </p>
+                      <p>
+                          Creating Ubuntu image in VMware
+                      </p>
+                      <p>
+                          Downloading Hadoop
+                      </p>
+                      <p>
+                          Installing SSH
+                      </p>
+                      <p>
+                          Configuring Hadoop
+                      </p>
+                      <p>
+                          Download, Installation &amp; Configuration Hive
+                      </p>
+                      <p>
+                          Download, Installation &amp; Configuration Pig
+                      </p>
+                      <p>
+                          Download, Installation &amp; Configuration Sqoop
+                      </p>
+                      <p>
+                          Download, Installation &amp; Configuration Hive
+                      </p>
+                      <p>
+                          Installing MySQL in Hadoop cluster.
+                      </p>
+                      <p>
+                          Download and work with Cloudera Image.
+                      </p>
+                      <h1>
+                          Configuring Hadoop in Different Modes
+                      </h1>
+                      <p>
+                          Local Mode
+                      </p>
+                      <p>
+                          Running without HDFS
+                      </p>
+                      <p>
+                          Pseudo-distributed Mode
+                      </p>
+                      <p>
+                          Running all daemons in a single node
+                      </p>
+                      <p>
+                          Fully distributed mode
+                      </p>
+                      <p>
+                          Running daemons on dedicated nodes
+                      </p>
+                      <h1>
+                      </h1>
+                      <h1>
+                          Cluster Maintenance
+                      </h1>
+                      <p>
+                          Managing Hadoop Processes
+                      </p>
+                      <p>
+                          Starting and Stopping Processes with Init Scripts
+                      </p>
+                      <p>
+                          Starting and Stopping Processes Manually
+                      </p>
+                      <p>
+                          HDFS Maintenance Tasks
+                      </p>
+                      <p>
+                          Adding a Datanode
+                      </p>
+                      <p>
+                          Decommissioning a Datanode
+                      </p>
+                      <p>
+                          Checking Filesystem Integrity with fsck
+                      </p>
+                      <p>
+                          Balancing HDFS Block Data
+                      </p>
+                      <p>
+                          Dealing with a Failed Disk
+                      </p>
+                      <p>
+                          MapReduce Maintenance Tasks
+                      </p>
+                      <p>
+                          Adding a Tasktracker
+                      </p>
+                      <p>
+                          Decommissioning a Tasktracker
+                      </p>
+                      <p>
+                          Killing a MapReduce Job
+                      </p>
+                      <p>
+                          Killing a MapReduce Task
+                      </p>
+                      <p>
+                          Dealing with a Blacklisted Tasktracker
+                      </p>
+                      <h1>
+                      </h1>
+                      <h1>
+                          Map Reduce Programming
+                      </h1>
+                      <p>
+                          Understanding block and input splits
+                      </p>
+                      <p>
+                          Common Input and Output Formats
+                      </p>
+                      <p>
+                          MapReduce Data types
+                      </p>
+                      <p>
+                          Understanding Writable and WritableComparable (Introduction)
+                      </p>
+                      <p>
+                          Data Flow in MapReduce Application
+                      </p>
+                      <p>
+                          Understanding MapReduce problem on real datasets(stocks).
+                      </p>
+                      <p>
+                          MapReduce Skeleton in Details
+                      </p>
+                      <p>
+                          Writing MapReduce Application
+                      </p>
+                      <p>
+                          Understanding Mapper function
+                      </p>
+                      <p>
+                          Understanding Reducer Function
+                      </p>
+                      <p>
+                          Understanding Driver
+                      </p>
+                      <p>
+                          Understanding Tool Runner
+                      </p>
+                      <p>
+                          Hands on Exercise
+                      </p>
+                      <p>
+                          MapReduce Continued
+                      </p>
+                      <p>
+                          Using Combiner
+                      </p>
+                      <p>
+                          Using Distributed Cache
+                      </p>
+                      <p>
+                          Passing the parameters to mapper and reducer
+                      </p>
+                      <p>
+                          Hands On Exercise
+                      </p>
+                      <p>
+                          Writing Custom key values
+                      </p>
+                      <p>
+                          Hands On Exercise
+                      </p>
+                      <p>
+                          Designed Use Cases for common problems.
+                      </p>
+                      <h1>
+                      </h1>
+                      <h1>
+                          Advanced MapReduce Programming
+                      </h1>
+                      <p>
+                          MapReduce Chaining.
+                      </p>
+                      <p>
+                          Customized Input Formats and Output Formats
+                      </p>
+                      <h1>
+                      </h1>
+                      <h1>
+                      </h1>
+                      <h1>
+                          Monitoring and debugging on a Production Cluster
+                      </h1>
+                      <p>
+                          Counters
+                      </p>
+                      <p>
+                          Skipping Bad Records
+                      </p>
+                      <p>
+                          Running in local mode
+                      </p>
+                      <h1>
+                      </h1>
+                      <h1>
+                      </h1>
+                      <h1>
+                          Tuning for Performance in MapReduce
+                      </h1>
+                      <p>
+                          Reducing network traffic with combiner
+                      </p>
+                      <p>
+                          Partitioners
+                      </p>
+                      <p>
+                          Reducing the amount of input data
+                      </p>
+                      <p>
+                          Using Compression
+                      </p>
+                      <p>
+                          Reusing the JVM
+                      </p>
+                      <p>
+                          Running with speculative execution
+                      </p>
+                      <h1>
+                      </h1>
+                      <h1>
+                          Hive
+                      </h1>
+                      <p>
+                          Hive concepts
+                      </p>
+                      <p>
+                          Hive architecture
+                      </p>
+                      <p>
+                          Install and configure hive on cluster
+                      </p>
+                      <p>
+                          Different type of tables in hive
+                      </p>
+                      <p>
+                          Hive library functions
+                      </p>
+                      <p>
+                          Buckets
+                      </p>
+                      <p>
+                          Partitions
+                      </p>
+                      <p>
+                          Joins in hive
+                      </p>
+                      <p>
+                          Inner joins
+                      </p>
+                      <p>
+                          Outer Joins
+                      </p>
+                      <p>
+                          Hive UDF
+                      </p>
+                      <h1>
+                      </h1>
+                      <h1>
+                          PIG
+                      </h1>
+                      <p>
+                          Pig basics
+                      </p>
+                      <p>
+                          Install and configure PIG on a cluster
+                      </p>
+                      <p>
+                          PIG Library functions
+                      </p>
+                      <p>
+                          Pig Vs Hive
+                      </p>
+                      <p>
+                          Write sample Pig Latin scripts
+                      </p>
+                      <p>
+                          Modes of running PIG
+                      </p>
+                      <p>
+                          Running in Grunt shell
+                      </p>
+                      <p>
+                          Running as Java program
+                      </p>
+                      <p>
+                          PIG UDFs
+                      </p>
+                      <h1>
+                          Sqoop
+                      </h1>
+                      <p>
+                          Install and configure Sqoop on cluster
+                      </p>
+                      <p>
+                          Connecting to RDBMS
+                      </p>
+                      <p>
+                          Installing MySQL
+                      </p>
+                      <p>
+                          Import data from Oracle/MySQL to hive
+                      </p>
+                      <p>
+                          Export data to Oracle/MySQL
+                      </p>
+                      <p>
+                          Internal mechanism of import/export
+                      </p>
+                      <h1>
+                      </h1>
+                      <h1>
+                          HBase
+                      </h1>
+                      <p>
+                          HBase concepts
+                      </p>
+                      <p>
+                          HBase architecture
+                      </p>
+                      <p>
+                          Region server architecture
+                      </p>
+                      <p>
+                          File storage architecture
+                      </p>
+                      <p>
+                          HBase basics
+                      </p>
+                      <p>
+                          Column access
+                      </p>
+                      <p>
+                          Scans
+                      </p>
+                      <p>
+                          HBase use cases
+                      </p>
+                      <p>
+                          Install and configure HBase on a multi node cluster
+                      </p>
+                      <p>
+                          Create database, Develop and run sample applications
+                      </p>
+                      <p>
+                          Access data stored in HBase using clients like Java, Python and Pearl
+                      </p>
+                      <p>
+                          Map Reduce client to access the HBase data
+                      </p>
+
+
+
+                  </iron-collapse>
+              </paper-card>
+
+              <paper-card heading="Linux administration" image="../images/linux.png" alt="Sailboat Harbor" class="white" on-tap="toggleclin">
+                  <iron-collapse id="collapseclin" style="width:100%;">
+
+
+                      <p>
+                          ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­
+                      </p>
+                      <h1>
+                          <strong>UNIX / LINUX</strong>
+                          <strong></strong>
+                      </h1>
+                      <h1>
+                          <strong>Overview of Operating System</strong>
+                      </h1>
+                      <h1>
+                          <strong>History of Unix / Linux</strong>
+                      </h1>
+                      <h1>
+                          <strong>Linux file system architecture</strong>
+                      </h1>
+                      <h2>
+                          #Basic Commands
+                      </h2>
+                      <p>
+                          Pwd, who, ls
+                      </p>
+                      <p>
+                          exit, date, cal, exit, banner
+                      </p>
+                      <h2>
+                          #System Startup &amp; Shutdown
+                      </h2>
+                      <p>
+                          Init, halt, shutdown
+                      </p>
+                      <p>
+                          Different Run Levels
+                      </p>
+                      <h2>
+                          #Working with files
+                      </h2>
+                      <p>
+                          Cat, touch, rm
+                      </p>
+                      <p>
+                          Cp, mv, ln, wc
+                      </p>
+                      <h2>
+                          #Working with directories
+                      </h2>
+                      <p>
+                          Mkdir, cd, rmdir rm­r
+                      </p>
+                      <p>
+                          More, head, tail
+                      </p>
+                      <p>
+                          Comparing files: diff comm
+                      </p>
+                      <h2>
+                          #File compression
+                      </h2>
+                      <p>
+                          Zip files directories
+                      </p>
+                      <p>
+                          Gzip, gunzip, zcat, compress
+                      </p>
+                      <p>
+                          Uncompress , pack, unpack
+                      </p>
+                      <h2>
+                          #Searching files
+                      </h2>
+                      <p>
+                          Find, locate, which, whereis
+                      </p>
+                      <p>
+                          Standard Input &amp; Output
+                      </p>
+                      <p>
+                          Redirecting Output
+                      </p>
+                      <p>
+                          Redirecting Input
+                      </p>
+                      <h2>
+                          #Pattern searching
+                      </h2>
+                      <p>
+                          Grep, grep with options Fgrep, egrep
+                      </p>
+                      <h2>
+                          #Tools for columns data
+                      </h2>
+                      <p>
+                          Cut, paste
+                      </p>
+                      <p>
+                          Tools for sorting
+                      </p>
+                      <p>
+                          Sort by line
+                      </p>
+                      <p>
+                          Sort by fields
+                      </p>
+                      <p>
+                          Sort with options
+                      </p>
+                      <p>
+                          Uniq
+                      </p>
+                      <h2>
+                          #File Permissions
+                      </h2>
+                      <p>
+                          Chmod, chown, chgrp
+                      </p>
+                      <h2>
+                          #Communication commands
+                      </h2>
+                      <p>
+                          wall, mail, mail with options
+                      </p>
+                      <p>
+                          Networking commands
+                      </p>
+                      <p>
+                          telnet, ftp
+                      </p>
+                      <p>
+                          Disk status
+                      </p>
+                      <p>
+                          du, df, free
+                      </p>
+                      <p>
+                          Job control
+                      </p>
+                      <p>
+                          Foreground jobs
+                      </p>
+                      <p>
+                          Background jobs
+                      </p>
+                      <p>
+                          Killing jobs
+                      </p>
+                      <h2>
+                          #Process status
+                      </h2>
+                      <p>
+                          Ps, Ps with options
+                      </p>
+                      <h2>
+                          #Vim Editor
+                      </h2>
+                      <p>
+                          Command mode
+                      </p>
+                      <p>
+                          Insert mode
+                      </p>
+                      <p>
+                          Execution mode
+                      </p>
+                      <h1>
+                          <strong>Shell scripting</strong>
+                      </h1>
+                      <h2>
+                          #Getting into shell
+                      </h2>
+                      <p>
+                          ­ What is shell?
+                      </p>
+                      <p>
+                          ­ Different types of shells
+                      </p>
+                      <p>
+                          ­ what is shell scripting
+                      </p>
+                      <p>
+                          ­ Advantages of shell scripting
+                      </p>
+                      <h2>
+                          #Hello World shell
+                      </h2>
+                      <p>
+                          ­ what is shebang?
+                      </p>
+                      <p>
+                          ­ Usual Bash Best practices.
+                      </p>
+                      <p>
+                          ­ First program "The hello world"
+                      </p>
+                      <p>
+                          ­ Modes of execution of bash script: Normal mode, compilation mode
+                      </p>
+                      <p>
+                          ­ Variables in bash
+                      </p>
+                      <p>
+                          ­ Shell arthematics
+                      </p>
+                      <p>
+                          ­ Command status variables
+                      </p>
+                      <p>
+                          ­ String length and substring
+                      </p>
+                      <p>
+                          ­ Accepting input from user.
+                      </p>
+                      <p>
+                          ­ Capturing command line arguments
+                      </p>
+                      <h2>
+                          #Expression and Looping concepts
+                      </h2>
+                      <p>
+                          ­ Decision making if, if else, multi if conditions
+                      </p>
+                      <p>
+                          ­ AND OR with if conditions
+                      </p>
+                      <p>
+                          ­ string, numeric expression
+                      </p>
+                      <p>
+                          ­ Select loops
+                      </p>
+                      <p>
+                          ­ For loop
+                      </p>
+                      <p>
+                          ­ For in loop examples
+                      </p>
+                      <p>
+                          ­ While loop
+                      </p>
+                      <p>
+                          ­ Infinite loops: while and for loop
+                      </p>
+                      <p>
+                          ­ Break, continue the loop
+                      </p>
+                      <p>
+                          ­ Exercises questions of if expression, and switch
+                      </p>
+                      <h1>
+                          <strong>Case Examples</strong>
+                      </h1>
+                      <h2>
+                          #Playing with shortcuts
+                      </h2>
+                      <p>
+                          ­ Linux One lines, playing with awk sed
+                      </p>
+                      <h2>
+                          #Files
+                      </h2>
+                      <p>
+                          ­ Reading from file
+                      </p>
+                      <p>
+                          ­ Redirection, Appending
+                      </p>
+                      <h2>
+                          #Functions
+                      </h2>
+                      <p>
+                          ­ Simple Hello world function
+                      </p>
+                      <p>
+                          ­ Local and global variables in function
+                      </p>
+                      <p>
+                          ­ Passing parameter positional parameters
+                      </p>
+                      <h2>
+                          #Real-time use cases
+                      </h2>
+                      <p>
+                          ­ What is cron job and Setting up cron jobs
+                      </p>
+                      <p>
+                          ­ System Admin tasks and setting Alerts
+                      </p>
+                      <p>
+                          ­ File backups with compression techniques
+                      </p>
+                      <p>
+                          ­ DB related scripts: Use case MySQL
+                      </p>
+
+
+                  </iron-collapse>
+              </paper-card>
+
+              <paper-card heading="Python" image="../images/python.png" alt="Sailboat Harbor" class="white" on-tap="togglecpyt">
+                  <iron-collapse id="collapsecpyt" style="width:100%;">
+
+
+                      <h1>
+                          Introduction to Python
+                      </h1>
+                      <p>
+                          History of Python
+                      </p>
+                      <p>
+                          Features
+                      </p>
+                      <p>
+                          Installing Python
+                      </p>
+                      <p>
+                          Basic Syntax
+                      </p>
+                      <h1>
+                          Getting Started
+                      </h1>
+                      <p>
+                          Running Python from DOS prompt
+                      </p>
+                      <p>
+                          Using the Python IDE
+                      </p>
+                      <h1>
+                          Language Basics
+                      </h1>
+                      <p>
+                          Operators
+                      </p>
+                      <p>
+                          Numbers
+                      </p>
+                      <p>
+                          Strings
+                      </p>
+                      <p>
+                          Boolean
+                      </p>
+                      <p>
+                          Variables
+                      </p>
+                      <p>
+                          Scoping and Expressions
+                      </p>
+                      <p>
+                          Use of tabs and whitespaces as indent
+                      </p>
+                      <h1>
+                          Collections
+                      </h1>
+                      <p>
+                          Lists
+                      </p>
+                      <p>
+                          Tuples
+                      </p>
+                      <p>
+                          Dictionaries
+                      </p>
+                      <p>
+                          Built-in-Functions/Methods
+                      </p>
+                      <h1>
+                          Decision-Making
+                      </h1>
+                      <p>
+                          If
+                      </p>
+                      <p>
+                          If-else
+                      </p>
+                      <p>
+                          Nested if-else
+                      </p>
+                      <h1>
+                          Loops
+                      </h1>
+                      <p>
+                          For
+                      </p>
+                      <p>
+                          While
+                      </p>
+                      <p>
+                          Nested Loops
+                      </p>
+                      <h1>
+                          Control Statements
+                      </h1>
+                      <p>
+                          Break
+                      </p>
+                      <p>
+                          Continue
+                      </p>
+                      <p>
+                          Pass
+                      </p>
+                      <h1>
+                          Functions
+                      </h1>
+                      <p>
+                          Creating user-defined functions
+                      </p>
+                      <p>
+                          Passing functions
+                      </p>
+                      <p>
+                          Function Arguments
+                      </p>
+                      <p>
+                          Function Arguments with default values
+                      </p>
+                      <p>
+                          Keyword Arguments
+                      </p>
+                      <p>
+                          Variable Length Arguments
+                      </p>
+                      <p>
+                          Variable Length Keyword Arguments
+                      </p>
+                      <p>
+                          Anonymous Functions
+                      </p>
+                      <p>
+                          DocStrings
+                      </p>
+                      <h1>
+                          Modules
+                      </h1>
+                      <p>
+                          Introduction to Modules
+                      </p>
+                      <p>
+                          Locating Modules
+                      </p>
+                      <p>
+                          Global and Local namespaces
+                      </p>
+                      <p>
+                          Creating your own modules
+                      </p>
+                      <p>
+                          Using modules
+                      </p>
+                      <p>
+                          Downloading and installing modules
+                      </p>
+                      <h1>
+                          Files
+                      </h1>
+                      <p>
+                          Printing to the Screen
+                      </p>
+                      <p>
+                          File I/O operations
+                      </p>
+                      <p>
+                          File Object Methods
+                      </p>
+                      <p>
+                          OS Object Methods
+                      </p>
+                      <h1>
+                          Exceptions
+                      </h1>
+                      <p>
+                          Introduction to exceptions
+                      </p>
+                      <p>
+                          Handling exceptions
+                      </p>
+                      <p>
+                          Creating exceptions
+                      </p>
+                      <p>
+                          Standard Exceptions
+                      </p>
+                      <p>
+                          Examples
+                      </p>
+                      <h1>
+                          Document Strings
+                      </h1>
+                      <p>
+                          Creating Doc Strings
+                      </p>
+                      <p>
+                          Accessing Doc Strings
+                      </p>
+                      <h1>
+                          Object Oriented Programming Basics
+                      </h1>
+                      <p>
+                          Introduction to OOPs
+                      </p>
+                      <p>
+                          Creating Classes
+                      </p>
+                      <p>
+                          Creating and accessing class methods
+                      </p>
+                      <p>
+                          Inheritance
+                      </p>
+                      <h1>
+                          Additional
+                      </h1>
+                      <p>
+                          Practice basic programming concepts with python.
+                      </p>
+                      <p>
+                          Exercises on understanding conditional constructs and loops
+                      </p>
+                      <p>
+                          Practice various string operators, functions and built-in methods
+                      </p>
+                      <p>
+                          Practice exercises on Lists, Tuples and Dictionary
+                      </p>
+                      <p>
+                          Practice exercises on dictionaries, functions and modules
+                      </p>
+                      <p>
+                          Practice exercises on file operations
+                      </p>
+                      <p>
+                          Practice exercises on file and os related features
+                      </p>
+                      <p>
+                          Practice exercises on Exceptions
+                      </p>
+                      <p>
+                          Exercises on OOPS
+                      </p>
+
+
+                  </iron-collapse>
+              </paper-card>
+
+              <!--<paper-card heading="AWS" image="../images/big_data.png" alt="Sailboat Harbor" class="white" on-tap="togglecaws">
+                  <iron-collapse id="collapsecaws" style="width:100%;">
+                      <p>  •Corporate Training</p>
+
+                      <p>  •	Classroom Led Trainings</p>
+
+                      <p>  •	Web Based Training</p>
+                  </iron-collapse>
+              </paper-card>-->
+          </iron-collapse>
+
+        </paper-card>
+
+      </li>
+
+      <li class="item2">
+        <paper-card heading="Technical Consulting services" image="../images/class.png" alt="Sailboat Harbor" class="white" >
+          <div class="card-content">
+              <a on-tap="toggle2">
+            Our Team has:
+              </a>
+
+          </div>
+          <iron-collapse id="collapse2" style="width:100%;">
+
+
+              <p>
+                  Our Team has:
+              </p>
+              <p>
+                  · A broad network of on-board facilitators, consultants and partner firms
+                  to offer a “best-in-class”, yet affordable suite of training, and
+                  organizational development resources
+              </p>
+              <p>
+                  · Ability to customize the training, both in content &amp; delivery,
+                  depending upon the unique requirements of each client
+              </p>
+              <p>
+                  · Virtual, e-learning and blended training solutions along with traditional
+                  high quality classroom training.
+              </p>
+              <p>
+                  · National and Global Delivery Resources.
+              </p>
+              <div>
+                  <p>
+                      · Our corporate training programs provide holistic solutions and we are
+                      committed to a philosophy of excellence.
+                  </p>
+              </div>
+
+
+
+          </iron-collapse>
+
+        </paper-card>
+
+      </li>
+
+    </ul>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-view3',
+
+
+        behaviors: [
+            Polymer.NeonAnimatableBehavior,
+            Polymer.NeonAnimationRunnerBehavior,
+            Polymer.NeonSharedElementAnimatableBehavior
+        ],
+        properties: {
+            // START ANIMATIONS
+            animationConfig: {
+                value: function(){
+                    return {
+                        'entry': [{
+                            name: 'slide-from-right-animation',
+                            node: this
+                        }],
+                        'exit': [{
+                            name: 'slide-right-animation',
+                            node: this
+                        }]
+                    }
+                }
+            }
+            // END ANIMATIONS
+        },
+
+
+        toggle: function(){
+            this.$.collapse.toggle();
+        },
+
+        toggle1: function(){
+            this.$.collapse1.toggle();
+        },
+
+        toggle2: function(){
+            this.$.collapse2.toggle();
+        },
+
+        toggleoadm: function(){
+            this.$.collapseoadm.toggle();
+        },
+
+        toggleodev: function(){
+            this.$.collapseodev.toggle();
+        },
+
+        toggleolin: function(){
+            this.$.collapseolin.toggle();
+        },
+
+        toggleopyt: function(){
+            this.$.collapseopyt.toggle();
+        },
+        toggleoaws: function(){
+            this.$.collapseoaws.toggle();
+        },
+
+        togglecadm: function(){
+            this.$.collapsecadm.toggle();
+        },
+
+        togglecdev: function(){
+            this.$.collapsecdev.toggle();
+        },
+
+        toggleclin: function(){
+            this.$.collapseclin.toggle();
+        },
+
+        togglecpyt: function(){
+            this.$.collapsecpyt.toggle();
+        },
+
+
+
+    });
+
+  </script>
+</dom-module>

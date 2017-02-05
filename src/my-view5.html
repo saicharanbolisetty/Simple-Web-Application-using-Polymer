@@ -1,0 +1,224 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/flip-card/flip-card.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-left-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-left-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/cascaded-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/transform-animation.html">
+<link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+
+
+
+<dom-module id="my-view5">
+    <!-- Defines the element's style and local DOM -->
+    <template>
+
+            <style is=custom-style include="shared-styles" include="app-grid-style" >
+            :host {
+                display: block;
+
+                padding: 10px;
+
+                --app-grid-columns: 3;
+                --app-grid-item-height: 100px;
+            }
+
+
+            ul {
+
+                position: relative;
+                max-width: 1000px;
+                margin: 5px auto;
+                padding: 0;
+                list-style: none;
+
+            }
+
+            li{
+                display: block;
+                width: 50%;
+                color: black;
+                text-decoration: none;
+            }
+
+            li a{
+
+                text-decoration: none;
+            }
+
+            .item, .item2 {
+                background-color: white;
+                /*float: left;*/
+                text-align:center;
+                margin: 0px auto 0px auto;
+            }
+
+            .item1, .item3 {
+                background-color: white;
+                float: right;
+                text-align:center;
+                margin: 0px auto 0px auto;
+            }
+
+            app-header {
+                display: none !important;
+                height: 0px;
+            }
+
+            flip-card {
+                display: block;
+                margin: 5px;
+                padding: 16px;
+                color: #757575;
+                border-radius: 5px;
+                background-color: #fff;
+                height: auto;
+
+            }
+
+
+
+            paper-card{
+
+                --paper-card-header-image-text:{
+                    text-align: center;
+                    color: #7742f4;
+                    margin-left:10%;
+                    font-family: 'Indie Flower',cursive;
+                };
+
+
+
+                /* display: block;
+                 margin: 5px;
+                 --paper-card-header-image: {
+                     height: 200px;
+                 }*/
+                display: block;
+                margin: 5px;
+                padding: 16px;
+                color: #757575;
+                border-radius: 5px;
+                background-color: #fff;
+                height: auto;
+
+
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                width:auto;
+            }
+
+
+
+
+
+            @media (max-width: 960px) {
+                ul {
+                    max-width: 800px;
+                }
+                li {
+                    width: 50%;
+                }
+            }
+            @media (max-width: 719px) {
+
+                ul {
+                    max-width: 400px;
+                }
+                li {
+                    width: 100%;
+                }
+            }
+
+
+
+        </style>
+
+
+
+        <ul class="app-grid">
+
+            <li class="item">
+            <flip-card axis="x">
+                <front>
+
+
+
+                    <paper-card heading="About Us!" image="../images/always.png" alt="Sailboat Harbor" class="white">
+                        <div class="card-content">
+                            Vytas Delivers Professional Class Training, Development, Consulting, Infrastructure and Business Solutions.
+                        </div>
+
+                    </paper-card>
+
+
+                </front>
+                <back>
+
+
+
+                    <paper-card heading="Services" image="../images/big_data.png" alt="Sailboat Harbor" class="white">
+                        <div class="card-content">
+                            Leverage experienced data scientists and methodologies to implement advanced models and algorithms.
+                        </div>
+
+                    </paper-card>
+                </back>
+            </flip-card>
+
+
+
+
+            </li>
+
+        </ul>
+
+
+
+
+
+
+
+
+    </template>
+    <!-- Creates the element's prototype and registers it -->
+    <script>
+        Polymer({
+            is: 'my-view5',
+
+            behaviors: [
+                Polymer.NeonAnimatableBehavior,
+                Polymer.NeonAnimationRunnerBehavior,
+                Polymer.NeonSharedElementAnimatableBehavior
+            ],
+            properties: {
+                // START ANIMATIONS
+                animationConfig: {
+                    value: function(){
+                        return {
+                            'entry': [{
+                                name: 'slide-from-right-animation',
+                                node: this
+                            }],
+                            'exit': [{
+                                name: 'slide-right-animation',
+                                node: this
+                            }]
+                        }
+                    }
+                }
+                // END ANIMATIONS
+            },
+        });
+    </script>
+</dom-module>
